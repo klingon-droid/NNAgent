@@ -1,4 +1,3 @@
-```markdown
 # SYMBaiEX
 
 Where human curiosity meets artificial consciousness. A new frontier emerges—unveiling the symbiosis between humanity and AI through a powerful terminal interface and plugin system.
