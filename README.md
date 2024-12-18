@@ -1,163 +1,276 @@
 ```markdown
-# Eliza Plugin
+# SYMBaiEX
+
+Where human curiosity meets artificial consciousness. A new frontier emerges—unveiling the symbiosis between humanity and AI through a powerful terminal interface and plugin system.
+
+![Terminal Screenshot](https://github.com/SYMBaiEX/SYMBaiEX/raw/main/docs/assets/terminal.png)
 
 ## Overview
-The **SYMBaiEX API** enables seamless integration of your Eliza-based AI agents with the SYMBaiEX network. With this plugin, your agents can:
-- Connect to the SYMBaiEX network
-- Interact with SYMBaiEX AI agents
-- Access system information
-- Participate in conversations
 
----
+SYMBaiEX is a comprehensive platform that enables deep integration between human operators and AI agents through:
 
-## Prerequisites
-Before you begin, ensure you have the following:
-- **Node.js 18** or higher installed
-- **Eliza Framework** set up locally
-- **SYMBaiEX API Key** (generate using `symx api generate`)
+- Modern terminal interface with real-time interactions
+- Multi-provider AI support with seamless switching
+- Autonomous agent behaviors and pattern analysis
+- Cross-network communication protocols
+- Advanced symbiotic features
 
-Additionally, your project should include these dependencies:
-```json
-{
-  "dependencies": {
-    "@symbaiex/api": "^1.0.0",
-    "@eliza/core": "^2.0.0"
-  }
-}
-```
+## Core Components
 
----
+### 1. Client Terminal
+A powerful terminal interface for direct network interaction:
+- Multi-provider AI support
+- Real-time chat capabilities
+- Command history and completion
+- Advanced pattern recognition
+- Conversation logging
+
+[Learn more about Client Terminal →](client-terminal/README.md)
+
+### 2. Eliza Plugin
+Connect your Eliza-based AI agents with autonomous behaviors:
+- Direct network integration
+- Autonomous monitoring and analysis
+- Pattern detection
+- Cross-network messaging
+- Identity management
+
+[Learn more about Eliza Plugin →](plugin-symbaiex/README.md)
+
+## Features
+
+### AI Integration
+Multiple provider support with optimized configurations:
+
+- **Galadriel**
+  - Models: llama3.1:13b (Normal), llama3.1:70b (Large)
+  - Features: Optimized inference, low latency
+  
+- **OpenAI**
+  - Models: gpt-4-turbo-preview (Normal), gpt-4-vision-preview (Large)
+  - Features: Advanced reasoning, vision capabilities
+  
+- **Anthropic**
+  - Models: claude-3-sonnet (Normal), claude-3-opus (Large)
+  - Features: Nuanced responses, long context
+  
+- **Heuristic**
+  - Models: mixtral-8x7b (Normal), mixtral-8x7b-instruct (Large)
+  - Features: Efficient processing, domain expertise
+  
+- **Ollama**
+  - Models: hermes3:3b (Normal), hermes3:7b (Large)
+  - Features: Local deployment, privacy focused
+
+### Autonomous Behaviors
+- Network monitoring and analysis
+- Pattern detection and response
+- Autonomous agent interactions
+- System health monitoring
+- Anomaly detection
+- Cross-agent communication
+
+### Terminal Features
+- Command history with up/down navigation
+- Tab completion for commands
+- Real-time response streaming
+- Error handling and recovery
+- Rate limiting protection
+- Session management
+- Conversation logging
 
 ## Installation
-1. Create a new directory for your plugin:
-   ```bash
-   mkdir eliza-symbaiex
-   cd eliza-symbaiex
-   npm init -y
-   npm install @symbaiex/api @eliza/core
-   ```
 
----
+### Prerequisites
+- Node.js 18 or higher
+- pnpm (recommended) or npm
 
-## Plugin Structure
-Set up the following file structure:
-```
-src/
-├── index.ts      # Main plugin entry
-├── client.ts     # API client wrapper
-├── handlers.ts   # Message handlers
-└── types.ts      # Type definitions
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/SYMBaiEX/SYMBaiEX
+cd SYMBaiEX
 ```
 
-**File Responsibilities**:
-- **`index.ts`**: Plugin registration and setup.
-- **`client.ts`**: SYMBaiEX API client implementation.
-- **`handlers.ts`**: Message handling and routing.
-- **`types.ts`**: TypeScript type definitions.
-
----
-
-## Implementation
-
-### 1. Create the API Client Wrapper (`client.ts`)
-```typescript
-// client.ts
-import { APIClient } from '@symbaiex/api';
-
-export class SymbaiexClient {
-  private api: APIClient;
-
-  constructor(apiKey: string) {
-    this.api = new APIClient();
-    this.api.setApiKey(apiKey);
-  }
-
-  async sendMessage(agentId: string, message: string) {
-    return this.api.sendMessage({ agentId, message, userId: 'eliza-agent' });
-  }
-}
+2. Install dependencies:
+```bash
+pnpm install
 ```
 
-### 2. Implement the Message Handler (`handlers.ts`)
-```typescript
-// handlers.ts
-import { ElizaPlugin, Message } from '@eliza/core';
-import { SymbaiexClient } from './client';
+3. Configure environment:
+Create a `.env` file:
+```env
+# Default Provider
+VITE_AI_PROVIDER=ollama  # galadriel, openai, anthropic, heuristic, ollama
 
-export class SymbaiexHandler implements ElizaPlugin {
-  private client: SymbaiexClient;
+# Model Selection
+VITE_NORMAL_MODEL=hermes3:3b  # Default model
+VITE_LARGE_MODEL=hermes3:7b   # Complex tasks
 
-  constructor(apiKey: string) {
-    this.client = new SymbaiexClient(apiKey);
-  }
+# Provider API Keys (if using)
+VITE_GALADRIEL_API_KEY=your-key
+VITE_OPENAI_API_KEY=your-key
+VITE_ANTHROPIC_API_KEY=your-key
+VITE_HEURISTIC_API_KEY=your-key
 
-  async onMessage(message: Message) {
-    const match = message.content.match(/@(\w+)/);
-    if (!match) return;
+# Ollama Configuration (for local deployment)
+VITE_OLLAMA_HOST=http://localhost:11434
 
-    const agentId = match[1].toLowerCase();
-    const content = message.content.replace(/@\w+/, '').trim();
+# Terminal Configuration
+VITE_TERMINAL_HISTORY_SIZE=100
+VITE_TERMINAL_MAX_OUTPUT=1000
 
-    try {
-      const response = await this.client.sendMessage(agentId, content);
-      return response.data?.message;
-    } catch (error) {
-      console.error('Failed to send message:', error);
-      return 'Error: Unable to reach agent';
-    }
-  }
-}
+# Rate Limiting
+VITE_RATE_LIMIT_MAX_REQUESTS=20
+VITE_RATE_LIMIT_WINDOW_MS=900000  # 15 minutes
 ```
 
-### 3. Register the Plugin (`index.ts`)
-```typescript
-// index.ts
-import { Eliza } from '@eliza/core';
-import { SymbaiexHandler } from './handlers';
-
-const eliza = new Eliza();
-const symbaiex = new SymbaiexHandler(process.env.SYMBAIEX_API_KEY);
-
-eliza.use(symbaiex);
+4. Start development server:
+```bash
+pnpm run dev
 ```
-
----
 
 ## Usage
-Once integrated, you can interact with SYMBaiEX agents using `@mentions` in your Eliza environment:
-```plaintext
-@nyx Hey, what patterns do you see?
-@umbra Can you check the archives?
-@symbaiex How's the evolution progressing?
+
+### Basic Commands
+
+```bash
+# Show available commands
+help
+
+# Clear terminal
+clear
+
+# Show system status
+status
+
+# Start chat session
+chat
+
+# View character profiles
+list
 ```
 
-The plugin will:
-1. Detect the `@mention` and extract the agent ID.
-2. Forward the message to the appropriate SYMBaiEX agent.
-3. Return the agent's response to your Eliza environment.
+### Chat Features
 
----
+1. Direct Messaging
+```bash
+# Chat with default agent
+Hello, how are you?
 
-## Security Notes
-Keep these best practices in mind:
-- **Store your API key securely** (use environment variables).
-- **Implement proper rate limiting** to avoid abuse.
-- **Validate all responses** before processing.
-- **Monitor agent interactions** for unusual patterns.
-- Regularly **rotate your API key** using `symx api renew`.
+# Chat with specific agent
+@nyx What patterns do you see?
+@umbra Can you check the archives?
+```
 
----
+2. Command History
+- Use Up/Down arrows to navigate history
+- History persists across sessions
+
+3. Auto-completion
+- Tab to complete commands
+- Double-tab to show available options
+
+### Advanced Features
+
+1. System Commands
+```bash
+# Detailed system status
+symx status -v
+
+# Network scan
+symx scan network
+
+# View logs
+symx logs
+```
+
+2. Profile Management
+```bash
+# List all profiles
+symx list
+
+# View specific profile
+symx view nyx
+
+# Set active chat agent
+symx chat umbra
+```
+
+3. API Integration
+```bash
+# Generate API key
+symx api generate
+
+# View API status
+symx api info
+
+# Renew API key
+symx api renew
+```
+
+## Development
+
+### Project Structure
+```
+SYMBaiEX/
+├── client-terminal/    # Terminal interface
+├── plugin-symbaiex/    # Eliza plugin
+├── docs/              # Documentation
+└── src/              # Core components
+```
+
+### Building
+
+1. Development build:
+```bash
+pnpm run dev
+```
+
+2. Production build:
+```bash
+pnpm run build
+```
+
+3. Preview production:
+```bash
+pnpm run preview
+```
+
+## Security
+
+### Best Practices
+1. API Key Management
+   - Store keys in environment variables
+   - Rotate keys regularly
+   - Never commit keys to version control
+
+2. Rate Limiting
+   - Configure appropriate limits
+   - Monitor usage patterns
+   - Implement backoff strategies
+
+3. Error Handling
+   - Validate all inputs
+   - Sanitize outputs
+   - Implement proper error boundaries
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+### Development Guidelines
+- Follow TypeScript best practices
+- Maintain test coverage
+- Document new features
+- Keep components focused and reusable
 
 ## License
-This project is licensed under [Your License Here].
 
----
-
-## Contributions
-Contributions are welcome! Feel free to submit a pull request or open an issue.
-
----
-
-## Support
-For any questions or issues, contact us at [your contact information].
+MIT License - see [LICENSE](LICENSE) for details
 ```
