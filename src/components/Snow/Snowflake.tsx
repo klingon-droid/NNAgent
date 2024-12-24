@@ -24,28 +24,51 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
   const flakeRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({ x: initialX, y: initialY });
   const frameRef = useRef<number>();
+  const visibilityRef = useRef(true);
 
   useEffect(() => {
     let startTime = performance.now();
+
+    // Handle visibility changes
+    const handleVisibilityChange = () => {
+      visibilityRef.current = document.visibilityState === 'visible';
+      if (visibilityRef.current) {
+        startTime = performance.now();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
     
     const animate = (currentTime: number) => {
+      if (!visibilityRef.current) {
+        frameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       const deltaTime = (currentTime - startTime) / 1000;
       startTime = currentTime;
 
       if (flakeRef.current) {
         // Update position
-        positionRef.current.y += speed * deltaTime * 30;
-        positionRef.current.x += wind * deltaTime * 30;
+        positionRef.current.y += speed * deltaTime * 20;
+        positionRef.current.x += wind * deltaTime * 20;
 
         // Add slight wobble
         const wobble = Math.sin(currentTime / 1500) * 1.5;
         
         // Check if snowflake has reached bottom
-        const maxY = window.innerHeight - size - 20; // Leave room for pile
+        const maxY = window.innerHeight + size; // Allow going slightly below viewport
         if (positionRef.current.y >= maxY) {
           // Reset to top with random x position
           positionRef.current.y = -size;
           positionRef.current.x = Math.random() * window.innerWidth;
+        }
+
+        // Wrap horizontally
+        if (positionRef.current.x < -size) {
+          positionRef.current.x = window.innerWidth + size;
+        } else if (positionRef.current.x > window.innerWidth + size) {
+          positionRef.current.x = -size;
         }
 
         // Apply position
@@ -56,10 +79,12 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
     };
 
     frameRef.current = requestAnimationFrame(animate);
-    return () => {
+
+    return () => { 
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
       }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [size, speed, wind]);
 
