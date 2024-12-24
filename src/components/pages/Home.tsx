@@ -2,7 +2,9 @@ import React from 'react';
 import { Terminal as TerminalIcon, Power, Copy, Check } from 'lucide-react';
 import { SocialLinks } from '../SocialLinks';
 import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
+import { UsernamePopup } from '../Terminal/components/UsernamePopup';
 import { UsernameDisplay } from '../Terminal/components/UsernameDisplay';
+import { userService } from '../../services/user';
 import { ADDRESSES } from '../../config/constants';
 
 interface HomeProps {
@@ -15,6 +17,13 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
   const [showUsernameInput, setShowUsernameInput] = React.useState(false);
   const [usernameInput, setUsernameInput] = React.useState('');
 
+  const handleSetUsername = () => {
+    if (usernameInput.trim()) {
+      userService.setUsername(usernameInput.trim());
+      setShowUsernameInput(false);
+      setUsernameInput('');
+    }
+  };
 
   return (
     <div className="w-full">
@@ -140,13 +149,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <UsernamePopup
           value={usernameInput}
           onChange={setUsernameInput}
-          onSubmit={() => {
-            if (usernameInput.trim()) {
-              userService.setUsername(usernameInput.trim());
-              setShowUsernameInput(false);
-              setUsernameInput('');
-            }
-          }}
+          onSubmit={handleSetUsername}
           onClose={() => {
             setShowUsernameInput(false);
             setUsernameInput('');

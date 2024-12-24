@@ -85,6 +85,7 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
   const handleSetUsername = () => {
     if (usernameInput.trim()) {
       userService.setUsername(usernameInput.trim());
+      terminalStore.clear(); // Refresh terminal output with new username
       setShowUsernameInput(false);
       setUsernameInput('');
     }
@@ -293,7 +294,14 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
         <UsernamePopup
           value={usernameInput}
           onChange={setUsernameInput}
-          onSubmit={handleSetUsername}
+          onSubmit={() => {
+            if (usernameInput.trim()) {
+              userService.setUsername(usernameInput.trim());
+              terminalStore.clear(); // Refresh terminal output with new username
+              setShowUsernameInput(false);
+              setUsernameInput('');
+            }
+          }}
           onClose={() => {
             setShowUsernameInput(false);
             setUsernameInput('');
