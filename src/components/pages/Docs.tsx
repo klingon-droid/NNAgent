@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { Terminal, Power, ChevronRight, ChevronLeft, Menu } from 'lucide-react';
+import { Terminal as TerminalIcon, Power, ChevronRight, ChevronLeft, Menu } from 'lucide-react';
 import { useIsMobile } from '../../hooks/useIsMobile';
+import { UsernameDisplay } from '../Terminal/components/UsernameDisplay';
+import { UsernamePopup } from '../Terminal/components/UsernamePopup';
+import { userService } from '../../services/user';
 import { docs } from '../../data/docs';
 import type { Section, Category } from '../../types';
 import { SocialLinks } from '../SocialLinks';
@@ -9,6 +12,8 @@ export const Docs: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<Category>(docs[0]);
   const [selectedSection, setSelectedSection] = useState<Section>(docs[0].sections[0]);
   const [showNav, setShowNav] = useState(false);
+  const [showUsernameInput, setShowUsernameInput] = React.useState(false);
+  const [usernameInput, setUsernameInput] = React.useState('');
   const isMobile = useIsMobile();
 
   const toggleNav = () => setShowNav(!showNav);
@@ -28,18 +33,21 @@ export const Docs: React.FC = () => {
     <div className="w-full">
       <div className="flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20 h-[600px]">
         {/* Header */}
-        <div className="flex items-center gap-2 p-3 border-b border-pink-500/30 bg-black/40">
+        <div className="flex items-center gap-1.5 xs:gap-2 p-2 xs:p-3 border-b border-pink-500/30 bg-black/40">
           {isMobile && (
             <button
               onClick={toggleNav}
               className="text-pink-500 hover:text-cyan-400 transition-colors"
             >
-              <Menu className="w-5 h-5" />
+              <Menu className="w-3 h-3 xs:w-4 xs:h-4" />
             </button>
           )}
-          <Terminal className="w-5 h-5 text-pink-500" />
-          <span className="text-pink-500 font-mono text-base">SYMBaiEX://docs</span>
-          <Power className="w-5 h-5 text-cyan-400 ml-auto" />
+          <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">SYMBaiEX://docs</span>
+          <div className="ml-auto flex items-center gap-2">
+            <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
+            <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
+          </div>
         </div>
 
         {/* Content */}
@@ -220,6 +228,23 @@ export const Docs: React.FC = () => {
           </div>
         </div>
       </div>
+      {showUsernameInput && (
+        <UsernamePopup
+          value={usernameInput}
+          onChange={setUsernameInput}
+          onSubmit={() => {
+            if (usernameInput.trim()) {
+              userService.setUsername(usernameInput.trim());
+              setShowUsernameInput(false);
+              setUsernameInput('');
+            }
+          }}
+          onClose={() => {
+            setShowUsernameInput(false);
+            setUsernameInput('');
+          }}
+        />
+      )}
       <SocialLinks />
     </div>
   );

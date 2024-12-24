@@ -18,7 +18,7 @@ export const TerminalLoading: React.FC<TerminalLoadingProps> = ({
   }, []);
 
   return (
-    <div className="flex items-center gap-1 text-cyan-400 font-mono animate-pulse">
+    <div className="flex items-center gap-1 text-cyan-400 font-mono text-xs sm:text-sm animate-pulse">
       <span>{text}</span>
       <span className="w-6 text-left">{dots}</span>
     </div>

@@ -7,6 +7,8 @@ interface SnowflakeProps {
   wind: number;
   initialX: number;
   initialY: number;
+  color: string;
+  glow: number;
 }
 
 export const Snowflake: React.FC<SnowflakeProps> = ({ 
@@ -15,7 +17,9 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
   speed,
   wind,
   initialX,
-  initialY
+  initialY,
+  color,
+  glow
 }) => {
   const flakeRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({ x: initialX, y: initialY });
@@ -30,11 +34,11 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
 
       if (flakeRef.current) {
         // Update position
-        positionRef.current.y += speed * deltaTime * 50;
+        positionRef.current.y += speed * deltaTime * 30;
         positionRef.current.x += wind * deltaTime * 30;
 
         // Add slight wobble
-        const wobble = Math.sin(currentTime / 1000) * 2;
+        const wobble = Math.sin(currentTime / 1500) * 1.5;
         
         // Check if snowflake has reached bottom
         const maxY = window.innerHeight - size - 20; // Leave room for pile
@@ -62,12 +66,14 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
   return (
     <div
       ref={flakeRef}
-      className="absolute rounded-full bg-white pointer-events-none"
+      className="absolute rounded-full pointer-events-none"
       style={{
         width: size,
         height: size,
         opacity,
-        filter: 'blur(1px)',
+        backgroundColor: color,
+        filter: `blur(${Math.max(1, size / 3)}px)`,
+        boxShadow: `0 0 ${size * glow}px ${color}, 0 0 ${size * glow * 2}px ${color}`,
       }}
     />
   );

@@ -50,6 +50,12 @@ class GaladrielAPI {
         throw new Error('Character not found');
       }
 
+      // Get username if available
+      const username = userService.getUsername();
+      const enhancedPrompt = username 
+        ? `[User: ${username}] ${message}`
+        : message;
+
       const userId = userService.getUserId();
       const conversationId = uuidv4();
 
@@ -71,7 +77,7 @@ class GaladrielAPI {
         model: 'llama3.1:70b',
         messages: [
           { role: 'system', content: character.systemPrompt },
-          { role: 'user', content: message }
+          { role: 'user', content: enhancedPrompt }
         ],
         temperature: character.temperature,
         max_tokens: tokenLimit

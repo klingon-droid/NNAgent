@@ -1,6 +1,7 @@
 import { Command } from '../../types';
 import { getCommandsByCategory } from './index';
 import { terminalStore } from '../../store/terminalStore';
+import { userService } from '../../services/user';
 
 export const systemCommands: Command[] = [
   {
@@ -50,6 +51,46 @@ export const systemCommands: Command[] = [
         '--------------------------------',
         'NOTE: Type "symx <command> -h" for detailed usage',
         'NOTE: Chat directly with SYMBaiEX by typing without the symx prefix!'
+      ];
+    }
+  },
+  {
+    command: 'username',
+    description: 'Set or view your username',
+    category: 'system',
+    action: (args) => {
+      if (args[0] === '-h') {
+        return [
+          'Usage: symx username [-h] [name]',
+          '',
+          'Set or view your username.',
+          '',
+          'Arguments:',
+          '  name    New username to set',
+          '',
+          'Examples:',
+          '  symx username         Show current username',
+          '  symx username anon    Set username to "anon"'
+        ];
+      }
+
+      const newUsername = args[0]?.trim();
+      if (newUsername) {
+        userService.setUsername(newUsername);
+        return [
+          'USERNAME UPDATED',
+          '--------------',
+          `Username set to: ${newUsername}`
+        ];
+      }
+
+      const currentUsername = userService.getUsername();
+      return [
+        'CURRENT USERNAME',
+        '---------------',
+        currentUsername || 'No username set',
+        '',
+        'Use "symx username <name>" to set username'
       ];
     }
   },

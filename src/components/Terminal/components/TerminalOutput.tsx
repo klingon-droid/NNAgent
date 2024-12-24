@@ -14,7 +14,7 @@ export const TerminalOutput: React.FC<TerminalOutputProps> = ({ lines, children 
   return (
     <div 
       ref={outputRef}
-      className="flex-1 overflow-y-auto terminal-output px-4 py-2 font-mono text-sm"
+      className="flex-1 overflow-y-auto terminal-output px-3 py-2 font-mono text-xs sm:text-sm"
       style={{ scrollBehavior: 'smooth' }}
     >
       {lines.map((line, i) => (

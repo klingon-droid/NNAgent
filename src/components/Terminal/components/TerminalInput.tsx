@@ -48,7 +48,7 @@ export const TerminalInput: React.FC<TerminalInputProps> = ({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyPress}
-        className="flex-1 bg-transparent text-pink-500 outline-none font-mono text-base placeholder-pink-500/50"
+        className="flex-1 bg-transparent text-pink-500 outline-none font-mono text-xs sm:text-sm lg:text-base placeholder-pink-500/50"
         placeholder="Type a command or chat directly..."
         spellCheck={false}
       />

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code2, Terminal as TerminalIcon, Users, Network, BookOpen, FileText, FileCode, Power } from 'lucide-react';
+import { Code2, Terminal as TerminalIcon, Users, Network, BookOpen, FileText, FileCode } from 'lucide-react';
 
 interface NavProps {
   onNavigate: (section: string) => void;
@@ -21,8 +21,8 @@ export const Navigation: React.FC<NavProps> = ({ onNavigate, activeSection }) =>
     <nav className="fixed top-0 w-full bg-black/50 backdrop-blur-sm border-b border-pink-500/30 px-4 py-2 z-50">
       <div className="max-w-5xl mx-auto space-y-2">
         <h1 className="text-center text-xl font-mono mb-3 flex items-center justify-center gap-2">
-          <span className="text-glow text-cyan-400">SYMBaiEX Terminal</span>
-          <span className="text-glow text-cyan-400 text-sm">v1.0.0</span>
+          <span className="text-glow text-cyan-400">SYMBaiEX TERMINAL</span>
+          <span className="text-glow text-cyan-400 text-sm">v1.0.3</span>
         </h1>
         <div className="flex justify-between items-center">
           {navItems.map(({ id, icon: Icon, label }) => (
@@ -38,7 +38,6 @@ export const Navigation: React.FC<NavProps> = ({ onNavigate, activeSection }) =>
                 <span className="font-mono hidden sm:inline">{label}</span>
               </button>
           ))}
-          <Power className="w-4 h-4 text-cyan-400" />
         </div>
       </div>
     </nav>

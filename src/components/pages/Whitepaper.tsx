@@ -1,42 +1,38 @@
 import React from 'react';
-import { Terminal as TerminalIcon, Power, Download, ExternalLink } from 'lucide-react';
+import { Terminal as TerminalIcon, Power, Download, ExternalLink, FileCode } from 'lucide-react';
 import { SocialLinks } from '../SocialLinks';
+import { UsernameDisplay } from '../Terminal/components/UsernameDisplay';
+import { UsernamePopup } from '../Terminal/components/UsernamePopup';
+import { userService } from '../../services/user';
 import { documents } from '../../assets';
 
 export const Whitepaper: React.FC = () => {
+  const [showUsernameInput, setShowUsernameInput] = React.useState(false);
+  const [usernameInput, setUsernameInput] = React.useState('');
+
   return (
     <div className="w-full">
       <div className="flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20 h-[600px]">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 p-4 border-b border-pink-500/30 bg-black/40">
-          <div className="flex items-center gap-2">
-            <TerminalIcon className="w-5 h-5 text-pink-500" />
-            <span className="text-pink-500 font-mono text-base">SYMBaiEX://whitepaper</span>
-          </div>
-          <div className="flex flex-col sm:flex-row sm:ml-auto gap-2 sm:gap-3">
+        <div className="flex items-center gap-1.5 xs:gap-2 p-2 xs:p-3 border-b border-pink-500/30 bg-black/40">
+          <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">SYMBaiEX://whitepaper</span>
+          <div className="ml-auto flex items-center gap-2">
+            <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
             <button
               onClick={() => window.open(documents.whitepaper, '_blank')}
-              className="flex items-center justify-center gap-2 px-3 py-1.5 bg-black/40 rounded-lg 
+              className="hidden sm:flex items-center gap-1.5 px-2 py-1 rounded-lg bg-black/40
                        border border-pink-500/30 hover:border-cyan-400/50 transition-colors"
             >
-              <span className="text-pink-500 font-mono text-sm">Open in New Tab</span>
-              <ExternalLink className="w-4 h-4 text-cyan-400" />
+              <FileCode className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
+              <span className="text-pink-500 font-mono text-[10px] xs:text-xs">View PDF</span>
             </button>
-            <button
-              href={documents.whitepaper}
-              download="SYMBaiEX_Whitepaper.pdf"
-              className="flex items-center justify-center gap-2 px-3 py-1.5 bg-black/40 rounded-lg 
-                       border border-pink-500/30 hover:border-cyan-400/50 transition-colors"
-            >
-              <span className="text-pink-500 font-mono text-sm">Download PDF</span>
-              <Download className="w-4 h-4 text-cyan-400" />
-            </button>
+            <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
           </div>
-          <Power className="hidden sm:block w-5 h-5 text-cyan-400" />
         </div>
 
         {/* PDF Viewer */}
-        <div className="flex-1 p-4 overflow-hidden relative pdf-container">
+        <div className="flex-1 p-2 xs:p-3 sm:p-4 overflow-hidden relative pdf-container">
           {/* Overlay gradient effects */}
           <div className="absolute inset-0 pointer-events-none">
             <div className="absolute inset-x-0 top-0 h-8 bg-gradient-to-b from-black/40 to-transparent" />
@@ -66,6 +62,23 @@ export const Whitepaper: React.FC = () => {
           />
         </div>
       </div>
+      {showUsernameInput && (
+        <UsernamePopup
+          value={usernameInput}
+          onChange={setUsernameInput}
+          onSubmit={() => {
+            if (usernameInput.trim()) {
+              userService.setUsername(usernameInput.trim());
+              setShowUsernameInput(false);
+              setUsernameInput('');
+            }
+          }}
+          onClose={() => {
+            setShowUsernameInput(false);
+            setUsernameInput('');
+          }}
+        />
+      )}
       <SocialLinks />
     </div>
   );

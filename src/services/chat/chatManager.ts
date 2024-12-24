@@ -11,9 +11,9 @@ export class ChatManager extends EventEmitter {
   private rooms: Map<string, ChatRoom> = new Map();
   private participants: Map<string, ChatParticipant> = new Map();
   private activeRoom: string = 'main';
-  private boredomThreshold = 600000; // 10 minutes
   private lastAgentResponse: Map<string, number> = new Map();
   private disposed = false;
+  private boredomEnabled = false; // Disable boredom by default
   private currentModel = { provider: 'GALADRIEL', model: 'llama3.1:70b' };
   private boredomResponseCount: Map<string, number> = new Map();
   private readonly MAX_BOREDOM_RESPONSES = 5;
@@ -47,7 +47,7 @@ export class ChatManager extends EventEmitter {
   }
 
   initializeBoredomChecker(): void {
-    if (this.disposed) return;
+    if (this.disposed || !this.boredomEnabled) return;
     
     setInterval(() => {
       if (!this.disposed) this.checkBoredom();
@@ -55,6 +55,8 @@ export class ChatManager extends EventEmitter {
   }
 
   checkBoredom(): void {
+    if (!this.boredomEnabled) return;
+    
     const now = Date.now();
     const room = this.rooms.get(this.activeRoom);
     if (!room) return;
@@ -70,7 +72,7 @@ export class ChatManager extends EventEmitter {
   }
 
   async generateBoredomResponse(agentId: string): Promise<void> {
-    if (this.disposed) return;
+    if (this.disposed || !this.boredomEnabled) return;
 
     try {
       // Check if we've hit the response limit for this agent

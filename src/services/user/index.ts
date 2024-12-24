@@ -1,12 +1,22 @@
 class UserService {
   private readonly USER_ID_KEY = 'symbaiex_user_id';
   private readonly ACTIVE_CHARACTER_KEY = 'symbaiex_active_character';
+  private readonly USERNAME_KEY = 'symbaiex_username';
   private userId: string;
   private activeCharacter: string = 'symbaiex'; // Default character
+  private username: string | null = null;
 
   constructor() {
     this.userId = this.loadOrGenerateUserId();
     this.loadActiveCharacter();
+    this.loadUsername();
+  }
+
+  private loadUsername(): void {
+    const stored = localStorage.getItem(this.USERNAME_KEY);
+    if (stored) {
+      this.username = stored;
+    }
   }
 
   private loadOrGenerateUserId(): string {
@@ -36,6 +46,15 @@ class UserService {
   setActiveCharacter(characterId: string): void {
     this.activeCharacter = characterId;
     localStorage.setItem(this.ACTIVE_CHARACTER_KEY, characterId);
+  }
+
+  getUsername(): string | null {
+    return this.username;
+  }
+
+  setUsername(username: string): void {
+    this.username = username;
+    localStorage.setItem(this.USERNAME_KEY, username);
   }
 }
 

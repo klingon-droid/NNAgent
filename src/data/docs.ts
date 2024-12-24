@@ -28,6 +28,58 @@ export const docs: Category[] = [
         }
       },
       {
+        id: 'client-terminal',
+        title: 'Client Terminal',
+        content: {
+          type: 'structured',
+          sections: [
+            {
+              heading: 'Overview',
+              text: [
+                'A standalone terminal client for interacting with the SYMBaiEX network.',
+                '',
+                'Key Features:',
+                '',
+                '• Clean, modern terminal interface',
+                '• Direct connection to SYMBaiEX network',
+                '• Built-in API integration',
+                '• Multi-provider AI support',
+                '• Username customization',
+                '• Local model integration via Ollama',
+                '• Real-time chat capabilities',
+                '• Command history and completion',
+                '• Customizable themes',
+                '• Cross-agent communication'
+              ]
+            }
+          ]
+        }
+      },
+      {
+        id: 'username',
+        title: 'Username System',
+        content: {
+          type: 'text',
+          lines: [
+            'The terminal supports custom usernames for personalized interactions.',
+            '',
+            'Setting Your Username:',
+            { type: 'list', items: [
+              'Click username in top-right corner',
+              'Use "symx username" command',
+              'Usernames persist across sessions',
+              'AI agents will address you by name'
+            ]},
+            '',
+            'Commands:',
+            { type: 'list', items: [
+              'symx username - Show current username',
+              'symx username <name> - Set new username'
+            ]}
+          ]
+        }
+      },
+      {
         id: 'quick-start',
         title: 'Quick Start',
         content: {
@@ -112,8 +164,25 @@ export const docs: Category[] = [
             {
               heading: 'Core Commands',
               commands: [
-                { command: 'symx help', description: 'Display available commands and categories' },
-                { command: 'symx clear', description: 'Clear terminal output' }
+                { command: 'username', description: 'Set or view your username' },
+                { command: 'help', description: 'Display available commands' },
+                { command: 'clear', description: 'Clear terminal output' },
+                { command: 'chat', description: 'Start chat session' }
+              ]
+            },
+            {
+              heading: 'System Commands',
+              commands: [
+                { command: 'symx status', description: 'Show system status' },
+                { command: 'symx scan', description: 'Scan network nodes' }
+              ]
+            },
+            {
+              heading: 'API Commands',
+              commands: [
+                { command: 'symx api generate', description: 'Generate new API key' },
+                { command: 'symx api show', description: 'Show current API key' },
+                { command: 'symx api renew', description: 'Replace existing key' }
               ]
             }
           ]
@@ -126,17 +195,17 @@ export const docs: Category[] = [
           type: 'structured',
           sections: [
             {
-              heading: 'Navigation',
-              commands: [
-                { command: 'symx home', description: 'Return to home page' },
-                { command: 'symx docs', description: 'Access documentation' }
-              ]
-            },
-            {
-              heading: 'System Status',
-              commands: [
-                { command: 'symx status', description: 'Show system status' },
-                { command: 'symx status -v', description: 'Display detailed metrics' }
+              heading: 'Available Providers',
+              text: [
+                'The terminal supports multiple AI providers with optimized responses:',
+                '',
+                '• Galadriel (llama3.1 models)',
+                '• OpenAI (GPT-4 Turbo)',
+                '• Anthropic (Claude 3)',
+                '• Heuristic (Mixtral)',
+                '• Ollama (local deployment)',
+                '',
+                'Each agent uses optimized prompts and settings for their unique personality.'
               ]
             }
           ]
@@ -165,78 +234,17 @@ export const docs: Category[] = [
           type: 'structured',
           sections: [
             {
-              heading: 'Profile Management',
-              commands: [
-                { command: 'symx list', description: 'List all available profiles' },
-                { command: 'symx view', description: 'View detailed profile' },
-                { command: 'symx characters', description: 'Access character gallery' }
-              ]
-            },
-            {
-              heading: 'Interaction',
-              commands: [
-                { command: 'symx chat', description: 'Interact with system agents' }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        id: 'lore-commands',
-        title: 'Lore Commands',
-        content: {
-          type: 'structured',
-          sections: [
-            {
-              heading: 'Knowledge Base',
-              commands: [
-                { command: 'symx lore', description: 'Access SYMBIEX lore database' },
-                { command: 'symx manifesto', description: 'View SYMBaiEX manifesto' }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        id: 'token-commands',
-        title: 'Token Commands',
-        content: {
-          type: 'structured',
-          sections: [
-            {
-              heading: '$SYMX Operations',
-              commands: [
-                { command: 'symx symx', description: 'Display token information' }
-              ]
-            }
-          ]
-        }
-      },
-      {
-        id: 'system-utilities',
-        title: 'System Utilities',
-        content: {
-          type: 'structured',
-          sections: [
-            {
-              heading: 'Logs & Monitoring',
-              commands: [
-                { command: 'symx api', description: 'Manage API access' },
-                { command: 'symx logs', description: 'View conversation logs' }
-              ]
-            },
-            {
-              heading: 'Experiment Controls',
-              commands: [
-                { command: 'symx experiment', description: 'Access experiment controls' }
-              ]
-            },
-            {
-              heading: 'Usage Notes',
+              heading: 'Chat Features',
               text: [
-                'Add -h to any command for detailed help',
-                'Example: symx help -h',
-                'Warning: Clearance level affects command access'
+                'Enhanced Chat Features:',
+                '',
+                '• Direct agent messaging',
+                '• Command history navigation',
+                '• Auto-completion',
+                '• Real-time updates',
+                '• Username recognition',
+                '• Personalized responses',
+                '• Cross-agent communication'
               ]
             }
           ]

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Twitter, Github } from 'lucide-react';
+import { Twitter, Github, MessageCircle } from 'lucide-react';
 
 export const SocialLinks: React.FC = () => {
   const socialLinks = [
@@ -7,6 +7,12 @@ export const SocialLinks: React.FC = () => {
       icon: Twitter,
       href: 'https://twitter.com/symbaiex',
       label: 'Twitter',
+      className: 'hover:text-cyan-400'
+    },
+    {
+      icon: MessageCircle,
+      href: 'https://t.me/SYMBaiEX',
+      label: 'Telegram',
       className: 'hover:text-cyan-400'
     },
     {

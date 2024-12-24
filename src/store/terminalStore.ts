@@ -1,5 +1,7 @@
 import { EventEmitter } from '../utils/EventEmitter';
 import { defaultCharacter } from '../config/defaultCharacter';
+import { characters } from '../data/characters';
+import { userService } from '../services/user';
 import { ChatManager } from '../services/chat/chatManager';
 import { v4 as uuidv4 } from 'uuid';
 import { ColoredLine } from '../types';
@@ -52,18 +54,35 @@ class TerminalStore extends EventEmitter {
   }
 
   private initializeBaseOutput(): void {
+    const activeCharacter = characters.find(c => c.id === userService.getActiveCharacter());
+    const username = userService.getUsername();
+    const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.addOutput([
-      { text: 'SYMBaiEX Terminal v1.0.0', color: 'text-cyan-400', type: 'header' },
+      { text: 'SYMBaiEX Terminal v1.0.3', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
       { text: 'Chat directly with SYMBaiEX by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
       { text: '', color: 'text-pink-500', type: 'text' },
-      { text: `Agent: ${defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },
+      { text: usernameDisplay, color: 'text-cyan-400', type: 'label' },
+      { text: `Agent: ${activeCharacter?.name || defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },
       { text: `Provider: ${defaultCharacter.modelProvider?.toUpperCase() || 'GALADRIEL'}`, color: 'text-cyan-400', type: 'label' },
       { text: `Model: ${defaultCharacter.model || 'llama3.1:70b'}`, color: 'text-cyan-400', type: 'label' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: '> Initializing system...', color: 'text-pink-500', type: 'prompt' }
     ]);
+  }
+
+  updateActiveAgent(characterId: string): void {
+    const character = characters.find(c => c.id === characterId);
+    if (character) {
+      this.addOutput([
+        { text: '', type: 'text', color: 'text-pink-500' },
+        { text: 'AGENT SWITCHED', type: 'header', color: 'text-cyan-400' },
+        { text: '--------------', type: 'separator', color: 'text-pink-500/30' },
+        { text: `Now chatting with: ${character.name}`, type: 'text', color: 'text-pink-500' },
+        { text: '', type: 'text', color: 'text-pink-500' }
+      ]);
+    }
   }
 
   private handleModelUpdate(modelInfo: { provider: string; model: string }): void {
@@ -94,7 +113,21 @@ class TerminalStore extends EventEmitter {
   }
 
   clear(): void {
-    this.output = [];
+    const activeCharacter = characters.find(c => c.id === userService.getActiveCharacter());
+    const username = userService.getUsername();
+    const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
+    this.output = [
+      { text: 'SYMBaiEX Terminal v1.0.3', color: 'text-cyan-400', type: 'header' },
+      { text: '', color: 'text-pink-500', type: 'text' },
+      { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
+      { text: 'Chat directly with SYMBaiEX by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
+      { text: '', color: 'text-pink-500', type: 'text' },
+      { text: usernameDisplay, color: 'text-cyan-400', type: 'label' },
+      { text: `Agent: ${activeCharacter?.name || defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },
+      { text: `Provider: ${defaultCharacter.modelProvider?.toUpperCase() || 'GALADRIEL'}`, color: 'text-cyan-400', type: 'label' },
+      { text: `Model: ${defaultCharacter.model || 'llama3.1:70b'}`, color: 'text-cyan-400', type: 'label' },
+      { text: '', color: 'text-pink-500', type: 'text' }
+    ];
     this.emit('change', this.getOutput());
   }
 }
