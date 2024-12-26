@@ -2,9 +2,9 @@ import { nyx } from './nyx';
 import { umbra } from './umbra';
 import { symbaiex } from './symbaiex';
 import { symbiex } from './symbiex';
-import { AICharacter } from '../types';
+import type { AICharacter } from '../types';
 
-export const characters: Record<string, AICharacter> = {
+export const aiCharacters: Record<string, AICharacter> = {
   nyx,
   umbra,
   symbaiex,
@@ -12,5 +12,5 @@ export const characters: Record<string, AICharacter> = {
 };
 
 export const getCharacter = (id: string): AICharacter | undefined => {
-  return characters[id];
+  return aiCharacters[id];
 };

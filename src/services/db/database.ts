@@ -102,4 +102,33 @@ export class Database implements IDatabase {
         return bTime - aTime;
       });
   }
+
+  async getCharacterLogs(): Promise<Memory[]> {
+    if (!this._isInitialized && typeof window !== 'undefined') {
+      this.loadFromStorage();
+    }
+
+    return this.memories
+      .filter(m => m.character_id === 'character_forge')
+      .sort((a, b) => b.timestamp - a.timestamp);
+  }
+
+  async addCharacterLog(character: any): Promise<void> {
+    if (!this._isInitialized && typeof window !== 'undefined') {
+      this.loadFromStorage();
+    }
+
+    const newMemory = {
+      id: this.memories.length + 1,
+      user_id: 'system',
+      character_id: 'character_forge',
+      conversation_id: 'character_logs',
+      message: JSON.stringify(character),
+      role: 'assistant',
+      timestamp: Date.now()
+    };
+    
+    this.memories.push(newMemory);
+    this.saveToStorage();
+  }
 }

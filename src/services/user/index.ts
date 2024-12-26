@@ -1,9 +1,11 @@
+import { generateUUID } from '../../utils/uuid';
+
 class UserService {
   private readonly USER_ID_KEY = 'symbaiex_user_id';
   private readonly ACTIVE_CHARACTER_KEY = 'symbaiex_active_character';
   private readonly USERNAME_KEY = 'symbaiex_username';
   private userId: string;
-  private activeCharacter: string = 'symbaiex'; // Default character
+  private activeCharacter: string = 'symbaiex';
   private username: string | null = null;
 
   constructor() {
@@ -23,7 +25,7 @@ class UserService {
     const stored = localStorage.getItem(this.USER_ID_KEY);
     if (stored) return stored;
 
-    const newId = Math.random().toString(36).substring(2, 15);
+    const newId = generateUUID();
     localStorage.setItem(this.USER_ID_KEY, newId);
     return newId;
   }
@@ -58,4 +60,5 @@ class UserService {
   }
 }
 
+// Create and export the singleton instance
 export const userService = new UserService();

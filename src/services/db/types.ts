@@ -16,4 +16,6 @@ export interface IDatabase {
   addMemory(memory: Omit<Memory, 'id'>): Promise<void>;
   getConversation(conversationId: string): Promise<Memory[]>;
   getConversations(): Promise<Memory[][]>;
+  getCharacterLogs(): Promise<Memory[]>;
+  addCharacterLog(character: any): Promise<void>;
 }

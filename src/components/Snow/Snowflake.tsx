@@ -24,10 +24,29 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
   const flakeRef = useRef<HTMLDivElement>(null);
   const positionRef = useRef({ x: initialX, y: initialY });
   const frameRef = useRef<number>();
+  const windowSizeRef = useRef({ 
+    width: typeof window !== 'undefined' ? window.innerWidth : 1920,
+    height: typeof window !== 'undefined' ? window.innerHeight : 1080
+  });
   const visibilityRef = useRef(true);
 
   useEffect(() => {
     let startTime = performance.now();
+
+    // Handle window resize
+    const handleResize = () => {
+      const oldWidth = windowSizeRef.current.width;
+      windowSizeRef.current = {
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+      // Reset position if outside bounds
+      const ratio = windowSizeRef.current.width / oldWidth;
+      positionRef.current.x *= ratio;
+      if (positionRef.current.x > windowSizeRef.current.width || positionRef.current.x < 0) {
+        positionRef.current.x = Math.random() * windowSizeRef.current.width;
+      }
+    };
 
     // Handle visibility changes
     const handleVisibilityChange = () => {
@@ -38,6 +57,7 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('resize', handleResize);
     
     const animate = (currentTime: number) => {
       if (!visibilityRef.current) {
@@ -57,17 +77,17 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
         const wobble = Math.sin(currentTime / 1500) * 1.5;
         
         // Check if snowflake has reached bottom
-        const maxY = window.innerHeight + size; // Allow going slightly below viewport
+        const maxY = windowSizeRef.current.height + size;
         if (positionRef.current.y >= maxY) {
           // Reset to top with random x position
           positionRef.current.y = -size;
-          positionRef.current.x = Math.random() * window.innerWidth;
+          positionRef.current.x = Math.random() * windowSizeRef.current.width;
         }
 
         // Wrap horizontally
         if (positionRef.current.x < -size) {
-          positionRef.current.x = window.innerWidth + size;
-        } else if (positionRef.current.x > window.innerWidth + size) {
+          positionRef.current.x = windowSizeRef.current.width + size;
+        } else if (positionRef.current.x > windowSizeRef.current.width + size) {
           positionRef.current.x = -size;
         }
 
@@ -84,6 +104,7 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
       if (frameRef.current) {
         cancelAnimationFrame(frameRef.current);
       }
+      window.removeEventListener('resize', handleResize);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
     };
   }, [size, speed, wind]);

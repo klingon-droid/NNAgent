@@ -1,7 +1,10 @@
 import { EventEmitter } from '../utils/EventEmitter';
 import { defaultCharacter } from '../config/defaultCharacter';
 import { characters } from '../data/characters';
+import { aiCharacters } from '../services/ai/characters';
 import { userService } from '../services/user';
+import { galadrielAPI } from '../services/ai/galadriel';
+import { db } from '../services/db';
 import { ChatManager } from '../services/chat/chatManager';
 import { v4 as uuidv4 } from 'uuid';
 import { ColoredLine } from '../types';
@@ -10,6 +13,7 @@ class TerminalStore extends EventEmitter {
   private output: (string | ColoredLine)[] = [];
   private chatManager: ChatManager;
   private userId: string;
+  private activeCharacter: string = userService.getActiveCharacter();
   private currentModel: { provider: string; model: string };
 
   constructor() {
@@ -58,7 +62,7 @@ class TerminalStore extends EventEmitter {
     const username = userService.getUsername();
     const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.addOutput([
-      { text: 'SYMBaiEX Terminal v1.0.3', color: 'text-cyan-400', type: 'header' },
+      { text: 'SYMBaiEX Terminal v1.0.4', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
       { text: 'Chat directly with SYMBaiEX by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
@@ -72,7 +76,55 @@ class TerminalStore extends EventEmitter {
     ]);
   }
 
+  async handleChat(message: string): Promise<(string | ColoredLine)[]> {
+    const character = characters.find(c => c.id === this.activeCharacter);
+    const aiCharacter = aiCharacters[this.activeCharacter];
+    
+    if (!character) {
+      return [
+        { text: 'ERROR: No active character selected', type: 'error', color: 'text-red-400' },
+        { text: 'Use "symx chat <agent>" to select a character', type: 'text', color: 'text-pink-500' }
+      ];
+    }
+
+    if (!aiCharacter) {
+      return [
+        { text: 'ERROR: Character AI profile not found', type: 'error', color: 'text-red-400' },
+        { text: 'Please report this error', type: 'text', color: 'text-pink-500' }
+      ];
+    }
+    try {
+      const response = await galadrielAPI.chat(character.id, message);
+      
+      // Store user message
+      await db.addMemory({
+        user_id: this.userId,
+        character_id: character.id,
+        conversation_id: uuidv4(),
+        message: message,
+        role: 'user',
+        timestamp: Date.now()
+      });
+
+      return [
+        { text: '[CHAT SESSION START]', type: 'header', color: 'text-cyan-400' },
+        { text: '--------------------------------', type: 'separator', color: 'text-pink-500/30' },
+        { text: `[${character.name.toUpperCase()}] Processing input: "${message}"`, type: 'text', color: 'text-cyan-400' },
+        { text: '', type: 'text', color: 'text-pink-500' },
+        { text: response.message, type: 'text', color: 'text-pink-500' },
+        { text: '', type: 'text', color: 'text-pink-500' },
+        { text: '[CHAT SESSION END]', type: 'header', color: 'text-cyan-400' }
+      ];
+    } catch (error) {
+      return [
+        { text: 'ERROR: Failed to process chat', type: 'error', color: 'text-red-400' },
+        { text: error instanceof Error ? error.message : 'Unknown error occurred', type: 'error', color: 'text-red-400' }
+      ];
+    }
+  }
+
   updateActiveAgent(characterId: string): void {
+    this.activeCharacter = characterId;
     const character = characters.find(c => c.id === characterId);
     if (character) {
       this.addOutput([
@@ -117,7 +169,7 @@ class TerminalStore extends EventEmitter {
     const username = userService.getUsername();
     const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.output = [
-      { text: 'SYMBaiEX Terminal v1.0.3', color: 'text-cyan-400', type: 'header' },
+      { text: 'SYMBaiEX Terminal v1.0.4', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
       { text: 'Chat directly with SYMBaiEX by typing without the symx prefix', color: 'text-pink-500', type: 'text' },

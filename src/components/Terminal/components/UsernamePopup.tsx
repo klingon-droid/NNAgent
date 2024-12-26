@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Check, X } from 'lucide-react';
 
+import { userService } from '../../../services/user';
+
 interface UsernamePopupProps {
   value: string;
   onChange: (value: string) => void;
-  onSubmit: () => void;
+  onSubmit?: () => void;
   onClose: () => void;
 }
 
@@ -22,7 +24,10 @@ export const UsernamePopup: React.FC<UsernamePopupProps> = ({
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && value.trim()) {
-      onSubmit();
+      const trimmedValue = value.trim();
+      userService.setUsername(trimmedValue);
+      if (onSubmit) onSubmit();
+      onClose();
     } else if (e.key === 'Escape') {
       onClose();
     }
@@ -58,7 +63,13 @@ export const UsernamePopup: React.FC<UsernamePopupProps> = ({
             
             <div className="flex items-center gap-2">
               <button
-                onClick={onSubmit}
+                onClick={() => {
+                  const trimmedValue = value.trim();
+                  if (!trimmedValue) return;
+                  userService.setUsername(trimmedValue);
+                  if (onSubmit) onSubmit();
+                  onClose();
+                }}
                 disabled={!value.trim()}
                 className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg 
                          bg-black/40 border border-pink-500/30 text-pink-500 font-mono text-sm

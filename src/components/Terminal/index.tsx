@@ -69,6 +69,7 @@ export const Terminal: React.FC<TerminalProps> = ({ onNavigate }) => {
             setShowUsernameInput(false);
             setUsernameInput('');
           }}
+          showBackButton={false}
         />
       )}
     </div>

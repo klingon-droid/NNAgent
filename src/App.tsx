@@ -13,14 +13,16 @@ import { Logs } from './components/pages/Logs';
 
 const routes = [
   { path: '/', element: 'home' },
-  { path: '/terminal', element: 'terminal' },
   { path: '/manifesto', element: 'manifesto' },
+  { path: '/terminal', element: 'terminal' },
   { path: '/characters', element: 'characters' },
+  { path: '/elizaforge', element: 'elizaforge' },
   { path: '/symx', element: 'symx' },
   { path: '/logs', element: 'logs' },
   { path: '/whitepaper', element: 'whitepaper' },
   { path: '/docs', element: 'docs' }
 ];
+import { ElizaForge } from './components/pages/ElizaForge';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -55,6 +57,8 @@ const App: React.FC = () => {
         return <Whitepaper />;
       case 'docs':
         return <Docs />;
+      case 'elizaforge':
+        return <ElizaForge />;
       default:
         return <Home onNavigate={handleNavigate} />;
     }

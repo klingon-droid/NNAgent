@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal as TerminalIcon, Power, Copy, Check } from 'lucide-react';
+import { Terminal as TerminalIcon, Power, Copy, Check, Users, Bot } from 'lucide-react';
 import { SocialLinks } from '../SocialLinks';
 import { useCopyToClipboard } from '../../hooks/useCopyToClipboard';
 import { UsernamePopup } from '../Terminal/components/UsernamePopup';
@@ -64,6 +64,32 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                   Access Terminal
                 </span>
               </button>
+              
+              <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <button
+                  onClick={() => onNavigate('characters')}
+                  className="w-full sm:w-auto group flex items-center justify-center gap-1.5 xs:gap-2 px-3 xs:px-4 py-1.5 xs:py-2 bg-black/40 border border-pink-500/30 
+                           rounded-lg transition-all duration-300 hover:bg-pink-500/10 hover:shadow-lg 
+                           hover:shadow-pink-500/20"
+                >
+                  <Users className="w-4 h-4 xs:w-5 xs:h-5 text-cyan-400 group-hover:text-cyan-300" />
+                  <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base group-hover:text-pink-400">
+                    View Agents
+                  </span>
+                </button>
+
+                <button
+                  onClick={() => onNavigate('elizaforge')}
+                  className="w-full sm:w-auto group flex items-center justify-center gap-1.5 xs:gap-2 px-3 xs:px-4 py-1.5 xs:py-2 bg-black/40 border border-pink-500/30 
+                           rounded-lg transition-all duration-300 hover:bg-pink-500/10 hover:shadow-lg 
+                           hover:shadow-pink-500/20"
+                >
+                  <Bot className="w-4 h-4 xs:w-5 xs:h-5 text-cyan-400 group-hover:text-cyan-300" />
+                  <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base group-hover:text-pink-400">
+                    Open Forge
+                  </span>
+                </button>
+              </div>
 
               <button
                 onClick={() => copyToClipboard(contractAddress)}
