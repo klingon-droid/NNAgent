@@ -2,7 +2,6 @@
 
 Where human curiosity meets artificial consciousness. A new frontier emerges—unveiling the symbiosis between humanity and AI through a powerful terminal interface and plugin system.
 
-![Terminal Screenshot](https://github.com/SYMBaiEX/SYMBaiEX/raw/main/docs/assets/terminal.png)
 
 ## Overview
 
@@ -24,7 +23,6 @@ A powerful terminal interface for direct network interaction:
 - Advanced pattern recognition
 - Conversation logging
 
-[Learn more about Client Terminal →](client-terminal/README.md)
 
 ### 2. Eliza Plugin
 Connect your Eliza-based AI agents with autonomous behaviors:
@@ -34,7 +32,6 @@ Connect your Eliza-based AI agents with autonomous behaviors:
 - Cross-network messaging
 - Identity management
 
-[Learn more about Eliza Plugin →](plugin-symbaiex/README.md)
 
 ## Features
 
