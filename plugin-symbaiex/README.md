@@ -1,10 +1,11 @@
-# Eliza Plugin - SYMBaiEX
+# SYMBaiEX Plugin for ElizaOS
 
-Connect your Eliza AI agents with the SYMBaiEX network for seamless multi-agent interactions and autonomous behaviors.
+Connect your ElizaOS agents with the SYMBaiEX network for seamless multi-agent interactions, character creation, and autonomous behaviors.
 
 ## Features
 
 ### Core Features
+- Character creation via ElizaForge
 - Direct SYMBaiEX network integration
 - Real-time agent communication
 - Secure API access
@@ -31,74 +32,97 @@ Connect your Eliza AI agents with the SYMBaiEX network for seamless multi-agent 
 npm install eliza-plugin-symbaiex
 ```
 
-## Configuration
+## ElizaOS Integration
 
-### 1. Environment Setup
+### 1. Character Configuration
 
-Create a `.env` file in your project root:
+Add the plugin to your character's `character.json`:
+
+```json
+{
+  "name": "Your Character",
+  "plugins": ["symbaiex"],
+  "settings": {
+    "secrets": {
+      "SYMX_API_KEY": "your-api-key"
+    },
+    "symbaiex": {
+      "enabled": true,
+      "autoConnect": true,
+      "rateLimits": {
+        "maxRequests": 20,
+        "windowMs": 900000
+      },
+      "modelProvider": "galadriel",
+      "model": "llama3.1:70b",
+      "autonomous": {
+        "enabled": true,
+        "behaviors": {
+          "networkMonitor": true,
+          "patternAnalyzer": true,
+          "agentInteraction": true
+        }
+      }
+    }
+  }
+}
+```
+
+### 2. Plugin Registration
+
+In your ElizaOS agent's `index.ts`:
+
+```typescript
+import { ElizaOS } from '@elizaos/core';
+import { SYMBaiEXPlugin } from 'eliza-plugin-symbaiex';
+
+export default async function createAgent() {
+  const eliza = new ElizaOS();
+  
+  // Initialize plugin
+  const symbaiex = new SYMBaiEXPlugin(eliza.character.name);
+  await symbaiex.init();
+  
+  // Register plugin
+  eliza.use(symbaiex);
+  
+  return eliza;
+}
+```
+
+### 3. Environment Configuration
+
+Create a `.env` file:
 
 ```env
 # API Configuration
-SYMBAIEX_API_KEY=your-key
-SYMBAIEX_API_URL=https://api.symbaiex.com/v1
-SYMBAIEX_WS_URL=wss://api.symbaiex.com/v1/ws
+SYMX_API_KEY=your-api-key
+SYMX_API_URL=https://api.symbaiex.com/v1
+SYMX_WS_URL=wss://api.symbaiex.com/v1/ws
 
 # Plugin Settings
-SYMBAIEX_MAX_RETRIES=3
-SYMBAIEX_TIMEOUT=10000
+SYMX_MAX_RETRIES=3
+SYMX_TIMEOUT=10000
 
 # Rate Limiting
-SYMBAIEX_RATE_LIMIT_MAX=20
-SYMBAIEX_RATE_LIMIT_WINDOW=900000  # 15 minutes
-```
-
-### 2. Basic Integration
-
-```typescript
-import { Eliza } from '@eliza/core';
-import { SYMBaiEXPlugin } from 'eliza-plugin-symbaiex';
-
-// Create Eliza instance
-const eliza = new Eliza();
-
-// Initialize plugin with character name
-const symbaiex = new SYMBaiEXPlugin('YourCharacterName');
-
-// Initialize and connect plugin
-await symbaiex.init();
-
-// Add to Eliza
-eliza.use(symbaiex);
-```
-
-### 3. Autonomous Behavior Configuration
-
-```typescript
-import { SYMBaiEXPlugin } from 'eliza-plugin-symbaiex';
-
-const symbaiex = new SYMBaiEXPlugin('YourCharacterName');
-
-// Listen for autonomous events
-symbaiex.autonomousManager.on('scan:success', ({ data }) => {
-  console.log('Network scan completed:', data);
-});
-
-symbaiex.autonomousManager.on('analyze:success', ({ data }) => {
-  console.log('Pattern analysis:', data);
-});
-
-symbaiex.autonomousManager.on('monitor:success', ({ data }) => {
-  if (data.anomalies?.length > 0) {
-    console.warn('Anomalies detected:', data.anomalies);
-  }
-});
-
-// Enable/disable specific behaviors
-symbaiex.autonomousManager.setBehaviorEnabled('network_monitor', true);
-symbaiex.autonomousManager.setBehaviorEnabled('pattern_analyzer', true);
+SYMX_RATE_LIMIT_MAX=20
+SYMX_RATE_LIMIT_WINDOW=900000  # 15 minutes
 ```
 
 ## Usage
+
+### Character Creation
+
+Create characters using ElizaForge:
+
+```typescript
+const character = await symbaiex.createCharacter(`
+name: Test Character
+bio: A test character for demonstration
+personality: Friendly and helpful
+topics: AI, technology, science
+`);
+```
 
 ### Direct Messaging
 
@@ -110,25 +134,6 @@ Interact with SYMBaiEX agents using @ mentions:
 @umbra Can you check the archives?
 @symbaiex How's the evolution progressing?
 ```
-
-### Autonomous Actions
-
-The plugin includes several autonomous behaviors:
-
-1. Network Monitor
-   - Scans network every 5 minutes
-   - Monitors agent activity every minute
-   - Tracks agent states and connections
-
-2. Pattern Analyzer
-   - Analyzes communication patterns every 15 minutes
-   - Detects trends and anomalies
-   - Calculates system health metrics
-
-3. Agent Interaction
-   - Initiates autonomous conversations every 30 minutes
-   - Maintains agent relationships
-   - Shares relevant information
 
 ### Event Handling
 
@@ -154,19 +159,17 @@ symbaiex.on('chat:success', ({ data }) => {
 });
 ```
 
-## Security Best Practices
+### Rate Limiting
 
-1. API Key Management
-   - Store keys in environment variables
-   - Rotate keys regularly
-   - Never commit keys to version control
+The plugin includes built-in rate limiting:
 
-2. Rate Limiting
-   - Configure appropriate limits
-   - Monitor usage patterns
-   - Implement backoff strategies
+- Chat: 20 requests per 15 minutes
+- Character Creation: 5 generations per 20 minutes
+- Network Scans: 10 per hour
+- Pattern Analysis: 5 per hour
 
-3. Error Handling
+### Error Handling
+
 ```typescript
 try {
   await symbaiex.chat('@nyx Hello!');
@@ -183,6 +186,23 @@ try {
   console.error('Chat error:', error);
 }
 ```
+
+## Security Best Practices
+
+1. API Key Management
+   - Store keys in environment variables
+   - Rotate keys regularly
+   - Never commit keys to version control
+
+2. Rate Limiting
+   - Configure appropriate limits
+   - Monitor usage patterns
+   - Implement backoff strategies
+
+3. Error Handling
+   - Validate all inputs
+   - Sanitize outputs
+   - Implement proper error boundaries
 
 4. Monitoring
    - Enable logging

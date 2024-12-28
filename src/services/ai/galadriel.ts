@@ -34,7 +34,11 @@ class GaladrielAPI {
     });
   }
 
-  async chat(characterId: string, message: string): Promise<ChatResponse> {
+  async chat(characterId: string, message: string, options?: {
+    systemPrompt?: string;
+    temperature?: number;
+    maxTokens?: number;
+  }): Promise<ChatResponse> {
     try {
       if (!this.validateApiKey()) {
         throw new Error('API configuration error: Missing API key');
@@ -49,9 +53,11 @@ class GaladrielAPI {
       }
 
       // For character creation, use a special system prompt
-      const systemPrompt = characterId === 'character' 
-        ? 'You are a character creation assistant. Return only valid JSON matching the exact schema provided.'
-        : aiCharacters[characterId]?.systemPrompt;
+      const systemPrompt = options?.systemPrompt || (
+        characterId === 'character' 
+          ? 'You are a character creation assistant. Return only valid JSON matching the exact schema provided.'
+          : aiCharacters[characterId]?.systemPrompt
+      );
         
       if (!systemPrompt) {
         throw new Error('Character system prompt not found');
@@ -80,8 +86,8 @@ class GaladrielAPI {
           { role: 'system', content: systemPrompt },
           { role: 'user', content: enhancedPrompt }
         ],
-        max_tokens: tokenLimit,
-        temperature, // Use character's temperature setting
+        max_tokens: options?.maxTokens || tokenLimit,
+        temperature: options?.temperature || temperature,
         stop: ["\n\n", "```", "###"] // Multiple stop sequences
       });
 

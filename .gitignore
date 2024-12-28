@@ -11,6 +11,17 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+
+# Build artifacts
+*.wasm
+*.worker.js
+*.tsbuildinfo
+dist/
+
+# Temporary files
+.temp
+.tmp
 
 # Editor directories and files
 .vscode/*

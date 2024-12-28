@@ -24,7 +24,21 @@ export default defineConfig(({ mode }) => {
       outDir: 'dist',
       target: 'esnext',
       sourcemap: true,
-      emptyOutDir: true
+      emptyOutDir: true,
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'ai-providers': [
+              './src/services/ai/providers/openai.ts',
+              './src/services/ai/providers/anthropic.ts',
+              './src/services/ai/providers/heuristic.ts',
+              './src/services/ai/providers/galadriel.ts',
+              './src/services/ai/providers/ollama.ts'
+            ]
+          }
+        }
+      }
     }
   };
 });

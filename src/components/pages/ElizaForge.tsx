@@ -11,6 +11,7 @@ import { useElizaForge } from '../../hooks/useElizaForge';
 import { CharacterPreview } from '../ElizaForge/CharacterPreview';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { SocialLinks } from '../SocialLinks';
+import { CharacterChat } from '../ElizaForge/CharacterChat';
 
 export const ElizaForge: React.FC = () => {
   const [showUsernameInput, setShowUsernameInput] = useState(false);
@@ -126,6 +127,12 @@ export const ElizaForge: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Chat Section */}
+      <div className="mt-4">
+        <CharacterChat character={characterData} />
+      </div>
+      
       <SocialLinks />
 
       {/* Username Popup */}

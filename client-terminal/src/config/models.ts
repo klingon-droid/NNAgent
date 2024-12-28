@@ -1,6 +1,6 @@
 export const modelConfigs = {
   galadriel: {
-    normal: 'llama3.1:13b',
+    normal: 'llama3.1',
     large: 'llama3.1:70b',
     description: 'Galadriel\'s optimized LLaMA models'
   },

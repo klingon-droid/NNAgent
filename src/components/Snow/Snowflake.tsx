@@ -91,8 +91,8 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
           positionRef.current.x = -size;
         }
 
-        // Apply position
-        flakeRef.current.style.transform = `translate(${positionRef.current.x + wobble}px, ${positionRef.current.y}px)`;
+        // Apply position with hardware acceleration
+        flakeRef.current.style.transform = `translate3d(${positionRef.current.x + wobble}px, ${positionRef.current.y}px, 0)`;
       }
 
       frameRef.current = requestAnimationFrame(animate);
@@ -120,6 +120,8 @@ export const Snowflake: React.FC<SnowflakeProps> = ({
         backgroundColor: color,
         filter: `blur(${Math.max(1, size / 3)}px)`,
         boxShadow: `0 0 ${size * glow}px ${color}, 0 0 ${size * glow * 2}px ${color}`,
+        transform: `translate3d(${positionRef.current.x}px, ${positionRef.current.y}px, 0)`,
+        willChange: 'transform'
       }}
     />
   );

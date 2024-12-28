@@ -1,15 +1,10 @@
-export const env = {
+export const config = {
   api: {
-    key: process.env.SYMBAIEX_API_KEY,
-    baseUrl: process.env.SYMBAIEX_API_URL,
-    wsUrl: process.env.SYMBAIEX_WS_URL
-  },
-  plugin: {
-    maxRetries: Number(process.env.SYMBAIEX_MAX_RETRIES),
-    timeout: Number(process.env.SYMBAIEX_TIMEOUT)
+    key: process.env.SYMX_API_KEY || '',
+    baseUrl: process.env.SYMX_API_URL || 'https://api.galadriel.com/v1'
   },
   rateLimit: {
-    maxRequests: Number(process.env.SYMBAIEX_RATE_LIMIT_MAX),
-    windowMs: Number(process.env.SYMBAIEX_RATE_LIMIT_WINDOW)
+    maxRequests: 5,
+    windowMs: 20 * 60 * 1000 // 20 minutes
   }
 };
