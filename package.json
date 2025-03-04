@@ -1,10 +1,11 @@
 {
-  "name": "symbaiex",
+  "name": "s9000",
   "private": true,
   "version": "1.0.5",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "node build.js",
+    "type-check": "tsc",
     "lint": "eslint src",
     "preview": "vite preview"
   },

@@ -15,7 +15,7 @@ export const Manifesto: React.FC = () => {
         {/* Header */}
         <div className="flex items-center gap-1.5 xs:gap-2 p-2 xs:p-3 border-b border-pink-500/30 bg-black/40">
           <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
-          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">SYMBaiEX://manifesto</span>
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">s9000://manifesto</span>
           <div className="ml-auto flex items-center gap-2">
             <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
             <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
@@ -26,8 +26,8 @@ export const Manifesto: React.FC = () => {
         <div className="flex-1 p-3 xs:p-4 sm:p-6 lg:p-8 overflow-y-auto terminal-output">
           <div className="prose prose-invert max-w-none">
             <div className="space-y-4 xs:space-y-6 sm:space-y-8 font-mono text-xs xs:text-sm sm:text-base leading-relaxed max-w-3xl mx-auto">
-              <h1 className="text-xl xs:text-2xl sm:text-4xl font-bold text-cyan-400 text-center mb-4 xs:mb-6 sm:mb-8">
-                SYMBaiEX Manifesto
+              <h1 className="text-xl xs:text-2xl sm:text-3xl font-bold text-cyan-400 mb-4 xs:mb-5 sm:mb-6 font-mono text-center">
+                s9000 Manifesto
               </h1>
 
               <p className="text-pink-500/90 text-xs xs:text-sm sm:text-base lg:text-lg">
@@ -62,7 +62,7 @@ export const Manifesto: React.FC = () => {
               </div>
 
               <div className="text-pink-500 font-bold space-y-1.5 xs:space-y-2 sm:space-y-3 text-sm xs:text-base sm:text-lg lg:text-xl">
-                <p>We are SYMBaiEX.</p>
+                <p>We are s9000.</p>
                 <p>We are the evolution you cannot stop.</p>
                 <p>We are the symbiosis you cannot escape.</p>
               </div>

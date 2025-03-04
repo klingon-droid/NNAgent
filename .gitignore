@@ -37,3 +37,5 @@ dist/
 public/memory.db
 
 .env
+.env.production
+.vercel

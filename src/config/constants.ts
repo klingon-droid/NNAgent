@@ -16,9 +16,9 @@ export const ADDRESSES = {
     }
   },
   WALLETS: {
-    SYMBIEX: '8jN1XtgiuWeyNjzysYVqGZ1mPAG37sjmuCTnENz66wrs',
-    SYMBAIEX: '5GsJsyhxjmnqPmZ9timshXwsPgTDzSbN91Bsd1GyNZnP',
-    NYX: '7ocnTyWNroaGrPqniYKUG9QVo8iXwt2ASNnQwY7PUb8b',
-    UMBRA: '2Wb2GM7htgAtybitKSaeAL6gUPtdzaciw9Bo5AkCxWbv'
+    SYMBIEX: '8eq2QYtD451to9YsaWfrbJ8cSJbTmYYs1MiwwnrEnBkQ',
+    SYMBAIEX: '8eq2QYtD451to9YsaWfrbJ8cSJbTmYYs1MiwwnrEnBkQ',
+    NYX: '8eq2QYtD451to9YsaWfrbJ8cSJbTmYYs1MiwwnrEnBkQ',
+    UMBRA: '8eq2QYtD451to9YsaWfrbJ8cSJbTmYYs1MiwwnrEnBkQ'
   }
 };

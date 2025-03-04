@@ -17,7 +17,7 @@ export const Navigation: React.FC<NavProps> = ({ onNavigate, activeSection }) =>
     { id: 'terminal', icon: TerminalIcon, label: 'TERMINAL' },
     { id: 'characters', icon: Users, label: 'AGENTS' },
     { id: 'elizaforge', icon: Bot, label: 'FORGE' },
-    { id: 'symx', icon: Network, label: '$SYMX' },
+    // { id: 'symx', icon: Network, label: '$SYMX' },
     { id: 'whitepaper', icon: FileCode, label: 'WHITEPAPER' },
     { id: 'docs', icon: FileText, label: 'DOCS' }
   ];
@@ -32,12 +32,12 @@ export const Navigation: React.FC<NavProps> = ({ onNavigate, activeSection }) =>
       <div className="max-w-5xl mx-auto flex flex-col items-center space-y-2">
         <div className="hidden sm:flex justify-center mb-2">
           <h1 className="text-base xs:text-lg sm:text-xl font-mono text-center">
-            <span className="text-glow text-cyan-400">SYMBaiEX TERMINAL v1.0.5</span>
+            <span className="text-glow text-cyan-400">s9000 TERMINAL v1.0.5</span>
           </h1>
         </div>
         <div className="flex items-center justify-between w-full sm:justify-center">
           <h1 className="text-xl font-mono flex items-center gap-2 sm:hidden">
-            <span className="text-glow text-cyan-400 text-xs xs:text-sm">SYMBaiEX TERMINAL v1.0.5</span>
+            <span className="text-glow text-cyan-400 text-xs xs:text-sm">s9000 TERMINAL v1.0.5</span>
           </h1>
           {isMobile ? (
             <button

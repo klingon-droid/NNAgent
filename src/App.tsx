@@ -5,7 +5,7 @@ import { Navigation } from './components/Navigation';
 import { Background } from './components/Background';
 import { Home } from './components/pages/Home';
 import { Gallery } from './components/pages/Gallery';
-import { Symx } from './components/pages/Symx';
+// import { Symx } from './components/pages/Symx';
 import { Manifesto } from './components/pages/Manifesto';
 import { Whitepaper } from './components/pages/Whitepaper';
 import { Docs } from './components/pages/Docs';
@@ -38,8 +38,8 @@ const App: React.FC = () => {
         return <Manifesto />;
       case 'characters':
         return <Gallery />;
-      case 'symx':
-        return <Symx />;
+      // case 'symx':
+        // return <Symx />;
       case 'logs':
         return <Logs onNavigate={handleNavigate} />;
       case 'whitepaper':

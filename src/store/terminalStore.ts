@@ -62,10 +62,10 @@ class TerminalStore extends EventEmitter {
     const username = userService.getUsername();
     const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.addOutput([
-      { text: 'SYMBaiEX Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
+      { text: 's9000 Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
-      { text: 'Chat directly with SYMBaiEX by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
+      { text: 'Chat directly with s9000 by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: usernameDisplay, color: 'text-cyan-400', type: 'label' },
       { text: `Agent: ${activeCharacter?.name || defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },
@@ -169,10 +169,10 @@ class TerminalStore extends EventEmitter {
     const username = userService.getUsername();
     const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.output = [
-      { text: 'SYMBaiEX Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
+      { text: 's9000 Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
-      { text: 'Chat directly with SYMBaiEX by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
+      { text: 'Chat directly with s9000 by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: usernameDisplay, color: 'text-cyan-400', type: 'label' },
       { text: `Agent: ${activeCharacter?.name || defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },

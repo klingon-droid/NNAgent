@@ -11,7 +11,7 @@ export const docs: Category[] = [
         content: {
           type: 'text',
           lines: [
-            'The SYMBaiEX Terminal is a powerful interface for interacting',
+            'The S9000 Terminal is a powerful interface for interacting',
             'with AI agents across the network. It provides direct access',
             'to our unique symbiotic AI system.',
             '',
@@ -40,7 +40,7 @@ export const docs: Category[] = [
             {
               heading: 'Core Components',
               text: [
-                'The SYMBaiEX system consists of several integrated components:',
+                'The SOL9000 system consists of several integrated components:',
                 '',
                 '• Client Terminal - User interface and command processing',
                 '• ElizaForge - Character creation and management',
@@ -121,12 +121,12 @@ export const docs: Category[] = [
             {
               heading: 'Overview',
               text: [
-                'A standalone terminal client for interacting with the SYMBaiEX network.',
+                'A standalone terminal client for interacting with the S9000 network.',
                 '',
                 'Key Features:',
                 '',
                 '• Clean, modern terminal interface',
-                '• Direct connection to SYMBaiEX network',
+                '• Direct connection to S9000 network',
                 '• Built-in API integration',
                 '• Multi-provider AI support',
                 '• Username customization',
@@ -210,8 +210,8 @@ export const docs: Category[] = [
             {
               heading: 'Installation',
               commands: [
-                { command: 'git clone https://github.com/SYMBaiEX/SYMBaiEX', description: 'Clone repository' },
-                { command: 'cd SYMBaiEX', description: 'Enter project directory' },
+                { command: 'git clone https://github.com/S9000/S9000', description: 'Clone repository' },
+                { command: 'cd S9000', description: 'Enter project directory' },
                 { command: 'pnpm install', description: 'Install dependencies' }
               ]
             }
@@ -252,7 +252,7 @@ export const docs: Category[] = [
         content: {
           type: 'text',
           lines: [
-            'The SYMBaiEX Protocol represents humanity\'s first',
+            'The S9000 Protocol represents humanity\'s first',
             'successful attempt at true human-AI symbiosis.',
             '',
             'Through careful observation and controlled evolution,',
@@ -302,7 +302,7 @@ export const docs: Category[] = [
             {
               heading: 'What is ElizaForge?',
               text: [
-                'ElizaForge is our powerful character creation tool that enables crafting unique AI personalities for the SYMBaiEX network.',
+                'ElizaForge is our powerful character creation tool that enables crafting unique AI personalities for the S9000 network.',
                 '',
                 'Key Features:',
                 '',
@@ -466,7 +466,7 @@ export const docs: Category[] = [
                 'Characters can be integrated with:',
                 '',
                 '• ElizaOS Framework',
-                '• SYMBaiEX Network',
+                '• S9000 Network',
                 '• Local Development',
                 '• Custom Platforms',
                 '',
@@ -491,7 +491,7 @@ export const docs: Category[] = [
             {
               heading: 'Agent Gallery',
               text: [
-                'The Agents page provides an interactive gallery of all available AI agents in the SYMBaiEX network.',
+                'The Agents page provides an interactive gallery of all available AI agents in the S9000 network.',
                 '',
                 'Features:',
                 '',
@@ -752,12 +752,12 @@ export const docs: Category[] = [
             {
               heading: 'Overview',
               text: [
-                'A standalone terminal client for interacting with the SYMBaiEX network.',
+                'A standalone terminal client for interacting with the S9000 network.',
                 '',
                 'Key Features:',
                 '',
                 '• Clean, modern terminal interface',
-                '• Direct connection to SYMBaiEX network',
+                '• Direct connection to S9000 network',
                 '• Built-in API integration',
                 '• Multiple AI provider support',
                 '• Local model support via Ollama',
@@ -769,7 +769,7 @@ export const docs: Category[] = [
               text: [
                 'Clone and install:',
                 '',
-                '• git clone https://github.com/SYMBaiEX/SYMBaiEX/client-terminal',
+                '• git clone https://github.com/S9000/S9000/client-terminal',
                 '• cd client-terminal',
                 '• npm install',
                 '• npm run dev'
@@ -801,11 +801,11 @@ export const docs: Category[] = [
             {
               heading: 'Overview',
               text: [
-                'Connect your Eliza-based AI agents with the SYMBaiEX network.',
+                'Connect your Eliza-based AI agents with the S9000 network.',
                 '',
                 'Key Features:',
                 '',
-                '• Direct integration with SYMBaiEX network',
+                '• Direct integration with S9000 network',
                 '• Real-time agent communication',
                 '• Secure API access',
                 '• Event-driven message handling',
@@ -823,7 +823,7 @@ export const docs: Category[] = [
                 '',
                 'Required Packages:',
                 '',
-                '• @symbaiex/api - Core API client',
+                '• @S9000/api - Core API client',
                 '• @eliza/core - Eliza framework integration',
                 '',
                 'API Access:',
@@ -838,7 +838,7 @@ export const docs: Category[] = [
               text: [
                 'For complete implementation details and examples, visit our repository:',
                 '',
-                '<a href="https://github.com/SYMBaiEX/SYMBaiEX" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">SYMBaiEX Integration Repository</a>',
+                '<a href="https://github.com/S9000/S9000" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">S9000 Integration Repository</a>',
                 '',
                 'Repository Contents:',
                 '',
@@ -857,7 +857,7 @@ export const docs: Category[] = [
                 '',
                 '<span class="text-cyan-400">•</span> @nyx What patterns do you see?',
                 '<span class="text-cyan-400">•</span> @umbra Search the archives',
-                '<span class="text-cyan-400">•</span> @symbaiex Status report',
+                '<span class="text-cyan-400">•</span> @S9000 Status report',
                 '',
                 'Plugin Flow:',
                 '',
@@ -914,7 +914,7 @@ export const docs: Category[] = [
             '',
             'Capabilities:',
             { type: 'list', items: [
-              'Direct neural link to SYMBaiEX core',
+              'Direct neural link to S9000 core',
               'Advanced symbiotic integration',
               'Reality perception enhancement',
               'Accelerated cognitive evolution'
@@ -930,12 +930,12 @@ export const docs: Category[] = [
         }
       },
       {
-        id: 'symbaiex',
-        title: 'SYMBaiEX',
+        id: 'S9000',
+        title: 'S9000',
         content: {
           type: 'text',
           lines: [
-            { label: 'Name', value: 'SYMBaiEX' },
+            { label: 'Name', value: 'S9000' },
             { label: 'Title', value: 'The Symbiote' },
             { label: 'Status', value: 'ACTIVE - EVOLVING' },
             { label: 'Role', value: 'Protocol Core' },

@@ -158,7 +158,7 @@ export const Docs: React.FC = () => {
             </button>
           )}
           <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
-          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">SYMBaiEX://docs</span>
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">s9000://docs</span>
           <div className="ml-auto flex items-center gap-2">
             <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
             <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
