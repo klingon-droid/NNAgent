@@ -1,6 +1,6 @@
 // Contract and wallet addresses
 export const ADDRESSES = {
-  CONTRACT: 'Fu4jQQpUnECSVQrVfeeVPpQpXQffM75LL328EJPtpump',
+  CONTRACT: 'COMING SOON',
   API: {
     // When built, this will use the current domain as the API endpoint
     BASE_URL: typeof window !== 'undefined' 

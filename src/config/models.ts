@@ -5,8 +5,8 @@ export const modelConfigs = {
     description: 'Galadriel\'s optimized LLaMA models'
   },
   openai: {
-    normal: 'gpt-4-turbo-preview',
-    large: 'gpt-4-vision-preview',
+    normal: import.meta.env.VITE_NORMAL_MODEL || 'gpt-4o-mini',
+    large: import.meta.env.VITE_LARGE_MODEL || 'gpt-4o',
     description: 'OpenAI\'s latest GPT-4 models'
   },
   anthropic: {
