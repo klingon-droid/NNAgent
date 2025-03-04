@@ -1,10 +1,10 @@
-# SYMBaiEX
+# SOLBOT-9000
 
 Where human curiosity meets artificial consciousness. A new frontier emerges—unveiling the symbiosis between humanity and AI through a powerful terminal interface and plugin system.
 
 ## Overview
 
-SYMBaiEX is a comprehensive platform that enables deep integration between human operators and AI agents through:
+SOLBOT-9000 (or S9000) is a comprehensive platform that enables deep integration between human operators and AI agents through:
 
 - Modern terminal interface with real-time interactions
 - Multi-provider AI support with seamless switching
@@ -14,8 +14,8 @@ SYMBaiEX is a comprehensive platform that enables deep integration between human
 
 ## Core Components
 
-### Eliza Plugin
-Connect your Eliza-based AI agents with autonomous behaviors:
+### Plugin System
+Connect your AI agents with autonomous behaviors:
 - Direct network integration
 - Autonomous monitoring and analysis
 - Pattern detection
@@ -53,19 +53,19 @@ Multiple provider support with optimized configurations:
 
 ### Prerequisites
 - Node.js 18 or higher
-- pnpm (recommended) or npm
+- npm
 
 ### Setup
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/SYMBaiEX/SYMBaiEX
-cd SYMBaiEX
+git clone https://github.com/sol-sendai/SOLBOT-9000
+cd SOLBOT-9000
 ```
 
 2. Install dependencies:
 ```bash
-pnpm install
+npm install
 ```
 
 3. Configure environment:
@@ -92,7 +92,7 @@ VITE_RATE_LIMIT_WINDOW_MS=900000  # 15 minutes
 
 4. Start development server:
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 ## Usage
@@ -141,47 +141,47 @@ Hello, how are you?
 1. System Commands
 ```bash
 # Detailed system status
-symx status -v
+sol status -v
 
 # Network scan
-symx scan network
+sol scan network
 
 # View logs
-symx logs
+sol logs
 ```
 
 2. Profile Management
 ```bash
 # List all profiles
-symx list
+sol list
 
 # View specific profile
-symx view nyx
+sol view nyx
 
 # Set active chat agent
-symx chat umbra
+sol chat umbra
 ```
 
 3. API Integration
 ```bash
 # Generate API key
-symx api generate
+sol api generate
 
 # View API status
-symx api info
+sol api info
 
 # Renew API key
-symx api renew
+sol api renew
 ```
 
 ## Development
 
 ### Project Structure
 ```
-SYMBaiEX/
-├── client-terminal/    # Terminal interface
-├── plugin-symbaiex/    # Eliza plugin
-├── docs/              # Documentation
+SOLBOT-9000/
+├── public/           # Static assets
+├── plugin-symbaiex/  # Plugin system
+├── scripts/          # Build scripts
 └── src/              # Core components
 ```
 
@@ -189,17 +189,17 @@ SYMBaiEX/
 
 1. Development build:
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 2. Production build:
 ```bash
-pnpm run build
+npm run build
 ```
 
 3. Preview production:
 ```bash
-pnpm run preview
+npm run preview
 ```
 
 ## Security
