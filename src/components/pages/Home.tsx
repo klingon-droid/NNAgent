@@ -31,7 +31,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         {/* Header */}
         <div className="flex items-center gap-1.5 xs:gap-2 p-2 xs:p-3 border-b border-pink-500/30 bg-black/40">
           <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
-          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">s9000://home</span>
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">NNAgent://home</span>
           <div className="ml-auto flex items-center gap-2">
             <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
             <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
@@ -42,7 +42,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-8 overflow-y-auto">
           <div className="w-full max-w-lg flex flex-col items-center space-y-6">
             <h1 className="text-xl xs:text-2xl sm:text-4xl font-bold text-cyan-400 mb-4 xs:mb-5 sm:mb-6 font-mono">
-              s9000 
+              NNAgent 
             </h1>
             
             <p className="text-pink-500/90 font-mono text-xs xs:text-sm sm:text-base text-center px-2">

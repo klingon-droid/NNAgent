@@ -14,7 +14,7 @@ interface Wallet {
 
 const wallets: Wallet[] = [
   { name: 'SymbiEX', address: ADDRESSES.WALLETS.SYMBIEX },
-  { name: 's9000', address: ADDRESSES.WALLETS.SYMBAIEX },
+  { name: 'NNAgent', address: ADDRESSES.WALLETS.SYMBAIEX },
   { name: 'NyX', address: ADDRESSES.WALLETS.NYX },
   { name: 'UmbrA', address: ADDRESSES.WALLETS.UMBRA }
 ];
@@ -30,7 +30,7 @@ export const Symx: React.FC = () => {
       <div className="flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20 min-h-[600px] max-h-[80vh]">
         <div className="flex items-center gap-1.5 xs:gap-2 p-2 xs:p-3 border-b border-pink-500/30 bg-black/40">
           <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
-          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">s9000://$SYMX</span>
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">NNAgent://$SYMX</span>
           <div className="ml-auto flex items-center gap-2">
             <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
             <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />

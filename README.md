@@ -1,10 +1,10 @@
-# SOLBOT-9000
+# Neon Nexus Agent
 
 Where human curiosity meets artificial consciousness. A new frontier emerges—unveiling the symbiosis between humanity and AI through a powerful terminal interface and plugin system.
 
 ## Overview
 
-SOLBOT-9000 (or S9000) is a comprehensive platform that enables deep integration between human operators and AI agents through:
+Neon Nexus Agent or NNAgent is a comprehensive platform that enables deep integration between human operators and AI agents through:
 
 - Modern terminal interface with real-time interactions
 - Multi-provider AI support with seamless switching
@@ -59,8 +59,8 @@ Multiple provider support with optimized configurations:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/sol-sendai/SOLBOT-9000
-cd SOLBOT-9000
+git clone https://github.com/sol-sendai/Neon-Nexus-Agent
+cd Neon-Nexus-Agent
 ```
 
 2. Install dependencies:
@@ -178,7 +178,7 @@ sol api renew
 
 ### Project Structure
 ```
-SOLBOT-9000/
+Neon-Nexus-Agent/
 ├── public/           # Static assets
 ├── plugin-symbaiex/  # Plugin system
 ├── scripts/          # Build scripts
