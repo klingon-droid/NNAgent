@@ -12,11 +12,12 @@ interface Wallet {
   address: string;
 }
 
+
 const wallets: Wallet[] = [
-  { name: 'SymbiEX', address: ADDRESSES.WALLETS.SYMBIEX },
-  { name: 'NNAgent', address: ADDRESSES.WALLETS.SYMBAIEX },
-  { name: 'NyX', address: ADDRESSES.WALLETS.NYX },
-  { name: 'UmbrA', address: ADDRESSES.WALLETS.UMBRA }
+  { name: 'NEXUSPRIME', address: ADDRESSES.WALLETS.NEXUSPRIME },
+  { name: 'XEN0B', address: ADDRESSES.WALLETS.XEN0B },
+  { name: 'DRAKON9', address: ADDRESSES.WALLETS.DRAKON9 },
+  { name: 'SPECTR', address: ADDRESSES.WALLETS.SPECTR }
 ];
 
 export const Symx: React.FC = () => {
@@ -30,7 +31,7 @@ export const Symx: React.FC = () => {
       <div className="flex flex-col bg-black/80 backdrop-blur-md rounded-lg border border-pink-500/30 shadow-lg shadow-pink-500/20 min-h-[600px] max-h-[80vh]">
         <div className="flex items-center gap-1.5 xs:gap-2 p-2 xs:p-3 border-b border-pink-500/30 bg-black/40">
           <TerminalIcon className="w-3 h-3 xs:w-4 xs:h-4 text-pink-500" />
-          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">NNAgent://$SYMX</span>
+          <span className="text-pink-500 font-mono text-xs xs:text-sm sm:text-base">NNAgent://$NNAGENT</span>
           <div className="ml-auto flex items-center gap-2">
             <UsernameDisplay onClick={() => setShowUsernameInput(true)} />
             <Power className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400" />
@@ -39,7 +40,7 @@ export const Symx: React.FC = () => {
         <div className="flex-1 p-2 xs:p-3 sm:p-4 overflow-y-auto">
           <div className="max-w-3xl mx-auto space-y-3">
             <div className="text-center">
-              <h2 className="text-sm xs:text-base font-mono text-cyan-400 mb-1">$SYMX Token</h2>
+              {/* <h2 className="text-sm xs:text-base font-mono text-cyan-400 mb-1">$SYMX Token</h2> */}
             </div>
             <div className="grid grid-cols-2 gap-1.5">
               <div className="bg-black/40 p-1.5 rounded-lg border border-pink-500/30">
@@ -66,7 +67,7 @@ export const Symx: React.FC = () => {
                 <div>
                   <h3 className="text-pink-500 mb-0.5 xs:mb-1">Description</h3>
                   <p className="text-cyan-400/80 leading-relaxed">
-                    $SYMX Powers the SYMBaiEX ecosystem. 
+                    {/* $SYMX Powers the NNAgent ecosystem.  */}
                   </p>
                 </div>
               </div>

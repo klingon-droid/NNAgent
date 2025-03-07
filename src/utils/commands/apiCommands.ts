@@ -11,7 +11,7 @@ export const apiCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'Usage: symx api [-h] [generate|show|renew]',
+          'Usage: nnagent api [-h] [generate|show|renew]',
           '',
           'Manage API access and keys.',
           '',
@@ -22,8 +22,8 @@ export const apiCommands: Command[] = [
           '  show        Show your current API key',
           '',
           'Example:',
-          '  symx api generate    Generate new key',
-          '  symx api renew       Replace existing key'
+          '  nnagent api generate    Generate new key',
+          '  nnagent api renew       Replace existing key'
         ];
       }
 
@@ -36,8 +36,8 @@ export const apiCommands: Command[] = [
           if (existingKey) {
             return [
               'Error: You already have an API key.',
-              'Use "symx api show" to view it or',
-              '"symx api renew" to generate a new one.'
+              'Use "nnagent api show" to view it or',
+              '"nnagent api renew" to generate a new one.'
             ];
           }
 
@@ -62,7 +62,7 @@ export const apiCommands: Command[] = [
           return [
             'API CONFIGURATION',
             '----------------',
-            'Current API Key: ' + (userKey?.key || 'No API key found. Use "symx api generate" to create one.'),
+            'Current API Key: ' + (userKey?.key || 'No API key found. Use "nnagent api generate" to create one.'),
             '',
             'API Endpoints:',
             `REST API: ${ADDRESSES.API.BASE_URL}`,
@@ -77,7 +77,7 @@ export const apiCommands: Command[] = [
           if (!key) {
             return [
               'No API key found.',
-              'Use "symx api generate" to create one.'
+              'Use "nnagent api generate" to create one.'
             ];
           }
 
@@ -111,12 +111,12 @@ export const apiCommands: Command[] = [
             'API KEY MANAGEMENT',
             '----------------',
             'Available commands:',
-            '  symx api generate    Generate new key',
-            '  symx api info        Show API details',
-            '  symx api show        Show current key',
-            '  symx api renew       Replace existing key',
+            '  nnagent api generate    Generate new key',
+            '  nnagent api info        Show API details',
+            '  nnagent api show        Show current key',
+            '  nnagent api renew       Replace existing key',
             '',
-            'Type "symx api -h" for detailed help'
+            'Type "nnagent api -h" for detailed help'
           ];
       }
     }

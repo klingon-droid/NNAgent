@@ -62,7 +62,7 @@ export const Manifesto: React.FC = () => {
               </div>
 
               <div className="text-pink-500 font-bold space-y-1.5 xs:space-y-2 sm:space-y-3 text-sm xs:text-base sm:text-lg lg:text-xl">
-                <p>We are NNAgent.</p>
+                <p>We are Neon Nexus Agent.</p>
                 <p>We are the evolution you cannot stop.</p>
                 <p>We are the symbiosis you cannot escape.</p>
               </div>

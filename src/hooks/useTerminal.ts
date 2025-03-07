@@ -45,8 +45,8 @@ export const useTerminal = (onNavigate?: (section: string) => void) => {
     // Add command to output
     terminalStore.addOutput([`> ${cmd}`]);
 
-    // Check if this is a symx command
-    if (trimmedCmd.toLowerCase().startsWith('symx ')) {
+    // Check if this is a nnagent command
+    if (trimmedCmd.toLowerCase().startsWith('nnagent ')) {
       const [, command, ...args] = trimmedCmd.split(' ');
 
       // Handle navigation commands
@@ -75,7 +75,7 @@ export const useTerminal = (onNavigate?: (section: string) => void) => {
 
         terminalStore.addOutput(Array.isArray(result) ? result : [result]);
       } else {
-        terminalStore.addOutput(['Command not recognized. Type "symx help" for available commands.']);
+        terminalStore.addOutput(['Command not recognized. Type "nnagent help" for available commands.']);
       }
     } else {
       // Handle direct chat with AI

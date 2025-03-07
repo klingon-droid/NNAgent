@@ -40,7 +40,7 @@ export const docs: Category[] = [
             {
               heading: 'Core Components',
               text: [
-                'The SOL9000 system consists of several integrated components:',
+                'The NNAgent system consists of several integrated components:',
                 '',
                 '• Client Terminal - User interface and command processing',
                 '• ElizaForge - Character creation and management',
@@ -151,15 +151,15 @@ export const docs: Category[] = [
             'Setting Your Username:',
             { type: 'list', items: [
               'Click username in top-right corner',
-              'Use "symx username" command',
+              'Use "nnagent username" command',
               'Usernames persist across sessions',
               'AI agents will address you by name'
             ]},
             '',
             'Commands:',
             { type: 'list', items: [
-              'symx username - Show current username',
-              'symx username <name> - Set new username'
+              'nnagent username - Show current username',
+              'nnagent username <name> - Set new username'
             ]}
           ]
         }
@@ -174,9 +174,9 @@ export const docs: Category[] = [
               heading: 'System Access',
               items: [
                 { number: '1', text: 'Access the terminal using the navigation menu' },
-                { number: '2', text: 'Type "symx help" to see available commands' },
-                { number: '3', text: 'Use "symx list" to view available agents' },
-                { number: '4', text: 'Start chatting with "symx chat <agent>"' }
+                { number: '2', text: 'Type "nnagent help" to see available commands' },
+                { number: '3', text: 'Use "nnagent list" to view available agents' },
+                { number: '4', text: 'Start chatting with "nnagent chat <agent>"' }
               ]
             },
             {
@@ -210,8 +210,8 @@ export const docs: Category[] = [
             {
               heading: 'Installation',
               commands: [
-                { command: 'git clone https://github.com/NNAgent/NNAgent', description: 'Clone repository' },
-                { command: 'cd NNAgent', description: 'Enter project directory' },
+                { command: 'git clone https://github.com/klingon-droid/NNAgent', description: 'Clone repository' },
+                { command: 'cd NeonNexusAgent', description: 'Enter project directory' },
                 { command: 'pnpm install', description: 'Install dependencies' }
               ]
             }
@@ -510,7 +510,7 @@ export const docs: Category[] = [
                 '',
                 '• Agent Cards - Visual representation of each agent',
                 '• Status Indicators - Real-time agent status',
-                '• Type Badges - AI/Human/SYMX indicators',
+                '• Type Badges - AI/Human/NNAGENT indicators',
                 '• Profile Modal - Detailed agent information',
                 '• Chat Interface - Direct communication',
                 '• Navigation Controls - Easy profile browsing'
@@ -558,7 +558,7 @@ export const docs: Category[] = [
                 '• Cross-agent communication',
                 '',
                 'Chat commands:',
-                '• symx chat <agent> - Set active agent',
+                '• nnagent chat <agent> - Set active agent',
                 '• @agent message - Direct mention',
                 '• clear - Clear chat history',
                 '• help - Show available commands'
@@ -588,7 +588,7 @@ export const docs: Category[] = [
                 '  - Specialized functions',
                 '  - Autonomous operation',
                 '',
-                '• SYMX - Symbiotic Entities',
+                '• NNAGENT - Symbiotic Entities',
                 '  - Human-AI fusion',
                 '  - Enhanced capabilities',
                 '  - Unique perspectives'
@@ -660,16 +660,16 @@ export const docs: Category[] = [
             {
               heading: 'System Commands',
               commands: [
-                { command: 'symx status', description: 'Show system status' },
-                { command: 'symx scan', description: 'Scan network nodes' }
+                { command: 'nnagent status', description: 'Show system status' },
+                { command: 'nnagent scan', description: 'Scan network nodes' }
               ]
             },
             {
               heading: 'API Commands',
               commands: [
-                { command: 'symx api generate', description: 'Generate new API key' },
-                { command: 'symx api show', description: 'Show current API key' },
-                { command: 'symx api renew', description: 'Replace existing key' }
+                { command: 'nnagent api generate', description: 'Generate new API key' },
+                { command: 'nnagent api show', description: 'Show current API key' },
+                { command: 'nnagent api renew', description: 'Replace existing key' }
               ]
             }
           ]
@@ -707,8 +707,8 @@ export const docs: Category[] = [
             {
               heading: 'Network Operations',
               commands: [
-                { command: 'symx scan', description: 'Scan network nodes' },
-                { command: 'symx scan net', description: 'Network topology scan' }
+                { command: 'nnagent scan', description: 'Scan network nodes' },
+                { command: 'nnagent scan net', description: 'Network topology scan' }
               ]
             }
           ]
@@ -769,7 +769,7 @@ export const docs: Category[] = [
               text: [
                 'Clone and install:',
                 '',
-                '• git clone https://github.com/NNAgent/NNAgent/client-terminal',
+                '• git clone https://github.com/klingon-droid/NNAgent/client-terminal',
                 '• cd client-terminal',
                 '• npm install',
                 '• npm run dev'
@@ -828,9 +828,9 @@ export const docs: Category[] = [
                 '',
                 'API Access:',
                 '',
-                '• Generate key: symx api generate',
-                '• View key: symx api show',
-                '• Renew key: symx api renew'
+                '• Generate key: nnagent api generate',
+                '• View key: nnagent api show',
+                '• Renew key: nnagent api renew'
               ]
             },
             {
@@ -838,7 +838,7 @@ export const docs: Category[] = [
               text: [
                 'For complete implementation details and examples, visit our repository:',
                 '',
-                '<a href="https://github.com/NNAgent/NNAgent" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">NNAgent Integration Repository</a>',
+                '<a href="https://github.com/klingon-droid/NNAgent" target="_blank" rel="noopener noreferrer" class="text-cyan-400 hover:underline">NNAgent Integration Repository</a>',
                 '',
                 'Repository Contents:',
                 '',
@@ -888,17 +888,24 @@ export const docs: Category[] = [
       }
     ]
   },
+
+
+  // NEXUSPRIME: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv',
+  // XEN0B: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv',
+  // DRAKON9: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv',
+  // SPECTR: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv'
+  
   {
     id: 'ai-agents',
     title: 'AI Agents',
     sections: [
       {
-        id: 'symbiex',
-        title: 'SymbiEX',
+        id: 'NEXUSPRIME',
+        title: 'NEXUSPRIME',
         content: {
           type: 'text',
           lines: [
-            { label: 'Name', value: 'SymbiEX' },
+            { label: 'Name', value: 'NEXUSPRIME' },
             { label: 'Title', value: 'The Architect' },
             { label: 'Status', value: 'CHEWING_GLASS' },
             { label: 'Role', value: 'Founder & Navigator' },

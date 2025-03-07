@@ -10,7 +10,7 @@ interface AgentCardProps {
 export const AgentCard: React.FC<AgentCardProps> = ({ agent, onClick }) => {
   const getTypeInfo = () => {
     switch (agent.id) {
-      case 'symbiex':
+      case 'nnagent':
         return {
           type: 'HUMAN',
           icon: User,

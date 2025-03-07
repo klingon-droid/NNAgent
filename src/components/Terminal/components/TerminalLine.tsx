@@ -20,7 +20,7 @@ export const TerminalLine: React.FC<TerminalLineProps> = ({ content }) => {
 
     // Replace command patterns
     let formattedText = text.replace(
-      /(symx \w+(?:\s+-[a-z])?)/gi,
+      /(nnagent \w+(?:\s+-[a-z])?)/gi,
       '<span class="text-cyan-400">$1</span>'
     );
     

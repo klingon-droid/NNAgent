@@ -1,6 +1,6 @@
 import background from './background.jpg';
 import symbaiex from './symbaiex.jpg';
-import whitepaper from './SOL9000_Whitepaper.pdf';
+import whitepaper from './NNAgent_Whitepaper.pdf';
 
 export const images = {
   background,

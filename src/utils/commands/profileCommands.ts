@@ -9,17 +9,17 @@ export const profileCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'Usage: symx list [-h]',
+          'Usage: nnagent list [-h]',
           '',
           'List all available character profiles.',
-          'Use "symx view <id>" to access detailed information.',
+          'Use "nnagent view <id>" to access detailed information.',
           '',
           'Options:',
           '  -h    Show this help message',
           '',
           'Example:',
-          '  symx list      List all profiles',
-          '  symx view nyx  View NyX\'s profile'
+          '  nnagent list      List all profiles',
+          '  nnagent view nyx  View NyX\'s profile'
         ];
       }
 
@@ -28,7 +28,7 @@ export const profileCommands: Command[] = [
         '---------------------',
         ...characters.map(c => `[${c.id.toUpperCase()}] ${c.name} - ${c.title}`),
         '',
-        'Use "symx view <id>" for detailed information'
+        'Use "nnagent view <id>" for detailed information'
       ];
     }
   },
@@ -39,7 +39,7 @@ export const profileCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'Usage: symx view <id> [-h]',
+          'Usage: nnagent view <id> [-h]',
           '',
           'View detailed information about a character.',
           '',
@@ -50,8 +50,8 @@ export const profileCommands: Command[] = [
           '  -h    Show this help message',
           '',
           'Example:',
-          '  symx view nyx    View NyX\'s profile',
-          '  symx view umbra  View UmbrA\'s profile'
+          '  nnagent view nyx    View NyX\'s profile',
+          '  nnagent view umbra  View UmbrA\'s profile'
         ];
       }
 
@@ -59,7 +59,7 @@ export const profileCommands: Command[] = [
       const character = characters.find(c => c.id === id);
       
       if (!character) {
-        return ['Error: Profile not found. Use "symx list" to see available profiles.'];
+        return ['Error: Profile not found. Use "nnagent list" to see available profiles.'];
       }
       
       return ['ACCESSING RESTRICTED DATA...', `Loading profile: ${character.name}`];

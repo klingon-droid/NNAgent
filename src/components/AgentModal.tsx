@@ -53,7 +53,7 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
 
   const getTypeInfo = () => {
     switch (character.id) {
-      case 'symbiex':
+      case 'nnagent':
         return {
           type: 'HUMAN',
           icon: User,
@@ -99,7 +99,7 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
     return `https://solscan.io/account/${address}`;
   };
 
-  const getChatCommand = () => `symx chat ${character.id}`;
+  const getChatCommand = () => `nngent chat ${character.id}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

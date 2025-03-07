@@ -14,3 +14,9 @@ export const characters: Character[] = [
 export const getCharacter = (id: string): Character | undefined => {
   return characters.find(c => c.id === id);
 };
+
+
+// NEXUSPRIME: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv',
+// XEN0B: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv',
+// DRAKON9: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv',
+// SPECTR: '57xrH2aaFWy9aJXRvDrStXYNvp5W2Y15Ee3N5FSE7ncv'

@@ -10,7 +10,7 @@ export const chatCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'Usage: symx chat [-h] [agent]',
+          'Usage: nnagent chat [-h] [agent]',
           '',
           'Set active chat agent or view current agent.',
           '',
@@ -20,8 +20,8 @@ export const chatCommands: Command[] = [
           '  umbra     - The Digital Archivist',
           '',
           'Example:',
-          '  symx chat nyx    Set NyX as active agent',
-          '  symx chat        View current agent',
+          '  nnagent chat nyx    Set NyX as active agent',
+          '  nnagent chat        View current agent',
           '',
           'Note: Type messages without "symx" prefix to chat'
         ];
@@ -37,8 +37,8 @@ export const chatCommands: Command[] = [
           '------------------',
           `Active: ${agent?.name || 'SYMBaiEX (Default)'}`,
           '',
-          'Type "symx chat -h" to see available agents',
-          'Chat directly by typing without the symx prefix'
+          'Type "nnagent chat -h" to see available agents',
+          'Chat directly by typing without the nnagent prefix'
         ];
       }
 
@@ -46,7 +46,7 @@ export const chatCommands: Command[] = [
       if (!agent) {
         return [
           'Error: Agent not found.',
-          'Type "symx chat -h" for available agents'
+          'Type "nnagent chat -h" for available agents'
         ];
       }
 
@@ -56,7 +56,7 @@ export const chatCommands: Command[] = [
         '--------------',
         `Now chatting with: ${agent.name}`,
         '',
-        'Start chatting by typing without the symx prefix'
+        'Start chatting by typing without the nnagent prefix'
       ];
     }
   }

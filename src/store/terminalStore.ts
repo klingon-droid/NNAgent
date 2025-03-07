@@ -62,10 +62,10 @@ class TerminalStore extends EventEmitter {
     const username = userService.getUsername();
     const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.addOutput([
-      { text: 'NNAgent Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
+      { text: 'Neon Nexus Agent Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
-      { text: 'Chat directly with NNAgent by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
+      { text: 'Chat directly with NNAgent by typing without the nnagent prefix', color: 'text-pink-500', type: 'text' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: usernameDisplay, color: 'text-cyan-400', type: 'label' },
       { text: `Agent: ${activeCharacter?.name || defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },
@@ -83,7 +83,7 @@ class TerminalStore extends EventEmitter {
     if (!character) {
       return [
         { text: 'ERROR: No active character selected', type: 'error', color: 'text-red-400' },
-        { text: 'Use "symx chat <agent>" to select a character', type: 'text', color: 'text-pink-500' }
+        { text: 'Use "nnagent chat <agent>" to select a character', type: 'text', color: 'text-pink-500' }
       ];
     }
 
@@ -169,10 +169,10 @@ class TerminalStore extends EventEmitter {
     const username = userService.getUsername();
     const usernameDisplay = username ? `User: ${username}` : 'User: Set Username';
     this.output = [
-      { text: 'NNAgent Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
+      { text: 'Neon Nexus Agent Terminal v1.0.5', color: 'text-cyan-400', type: 'header' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: 'Type "help" for available commands', color: 'text-pink-500', type: 'text' },
-      { text: 'Chat directly with NNAgent by typing without the symx prefix', color: 'text-pink-500', type: 'text' },
+      { text: 'Chat directly with NNAgent by typing without the nnagent prefix', color: 'text-pink-500', type: 'text' },
       { text: '', color: 'text-pink-500', type: 'text' },
       { text: usernameDisplay, color: 'text-cyan-400', type: 'label' },
       { text: `Agent: ${activeCharacter?.name || defaultCharacter.name}`, color: 'text-cyan-400', type: 'label' },

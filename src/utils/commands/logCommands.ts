@@ -8,7 +8,7 @@ export const logCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'Usage: symx logs [-h] [characters]',
+          'Usage: nnagent logs [-h] [characters]',
           '',
           'View system logs.',
           '',
@@ -17,8 +17,8 @@ export const logCommands: Command[] = [
           '  characters  Show created character logs',
           '',
           'Example:',
-          '  symx logs           View conversation logs',
-          '  symx logs characters View created characters'
+          '  nnagent logs           View conversation logs',
+          '  nnagent logs characters View created characters'
         ];
       }
 

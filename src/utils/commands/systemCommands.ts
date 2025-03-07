@@ -11,7 +11,7 @@ export const systemCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'USAGE: symx help [-h] [category]',
+          'USAGE: nnagent help [-h] [category]',
           '',
           'DESCRIPTION:',
           'Display available commands and their descriptions.',
@@ -25,15 +25,15 @@ export const systemCommands: Command[] = [
           '  network     Network diagnostics',
           '  lore        Access narrative database',
           '  profiles    Entity information',
-          '  token       $SYMX operations',
+          // '  token       $SYMX operations',
           '  experiment  Experiment controls',
           '',
           'EXAMPLES:',
-          '  symx help            Show all commands',
-          '  symx help system     Show system commands',
-          '  symx help -h         Show this help message',
+          '  nnagent help            Show all commands',
+          '  nnagent help system     Show system commands',
+          '  nnagent help -h         Show this help message',
           '',
-          'NOTE: Chat directly with SYMBaiEX by typing without the symx prefix!'
+          'NOTE: Chat directly with SYMBaiEX by typing without the nnagent prefix!'
         ];
       }
 
@@ -41,7 +41,7 @@ export const systemCommands: Command[] = [
       const commands = getCommandsByCategory(category);
       
       if (category && commands.length === 0) {
-        return ['Error: Category not found. Type "symx help -h" for available categories.'];
+        return ['Error: Category not found. Type "nnagent help -h" for available categories.'];
       }
 
       return [
@@ -49,8 +49,8 @@ export const systemCommands: Command[] = [
         '--------------------------------',
         ...commands.map(cmd => `• ${cmd.command.padEnd(12)} - ${cmd.description}`),
         '--------------------------------',
-        'NOTE: Type "symx <command> -h" for detailed usage',
-        'NOTE: Chat directly with SYMBaiEX by typing without the symx prefix!'
+        'NOTE: Type "nnagent <command> -h" for detailed usage',
+        'NOTE: Chat directly with SYMBaiEX by typing without the nnagent prefix!'
       ];
     }
   },
@@ -61,7 +61,7 @@ export const systemCommands: Command[] = [
     action: (args) => {
       if (args[0] === '-h') {
         return [
-          'Usage: symx username [-h] [name]',
+          'Usage: nnagent username [-h] [name]',
           '',
           'Set or view your username.',
           '',
@@ -69,8 +69,8 @@ export const systemCommands: Command[] = [
           '  name    New username to set',
           '',
           'Examples:',
-          '  symx username         Show current username',
-          '  symx username anon    Set username to "anon"'
+          '  nnagent username         Show current username',
+          '  nnagent username anon    Set username to "anon"'
         ];
       }
 
@@ -90,7 +90,7 @@ export const systemCommands: Command[] = [
         '---------------',
         currentUsername || 'No username set',
         '',
-        'Use "symx username <name>" to set username'
+        'Use "nnagent username <name>" to set username'
       ];
     }
   },

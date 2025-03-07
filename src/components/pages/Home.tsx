@@ -42,7 +42,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
         <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-8 overflow-y-auto">
           <div className="w-full max-w-lg flex flex-col items-center space-y-6">
             <h1 className="text-xl xs:text-2xl sm:text-4xl font-bold text-cyan-400 mb-4 xs:mb-5 sm:mb-6 font-mono">
-              NNAgent 
+              NeonNexus Agent
             </h1>
             
             <p className="text-pink-500/90 font-mono text-xs xs:text-sm sm:text-base text-center px-2">
