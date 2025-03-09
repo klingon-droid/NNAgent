@@ -108,7 +108,7 @@ export const Symx: React.FC = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 xs:grid-cols-2 gap-1.5">
-              <a
+              {/* <a
                 href="https://t.me/SYMBaiEX"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -117,8 +117,8 @@ export const Symx: React.FC = () => {
               >
                 <MessageCircle className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400 group-hover:text-cyan-300" />
                 <span className="text-pink-500 font-mono text-[10px] xs:text-xs group-hover:text-pink-400">Join Telegram</span>
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 href="https://dexscreener.com/solana/aw1ay7cbxt7lmcya7tqap1wnfhhsus4v7hpdktdumza6"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -127,7 +127,7 @@ export const Symx: React.FC = () => {
               >
                 <ExternalLink className="w-3 h-3 xs:w-4 xs:h-4 text-cyan-400 group-hover:text-cyan-300" />
                 <span className="text-pink-500 font-mono text-[10px] xs:text-xs group-hover:text-pink-400">DexScreener</span>
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

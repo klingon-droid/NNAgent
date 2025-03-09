@@ -5,19 +5,19 @@ export const SocialLinks: React.FC = () => {
   const socialLinks = [
     {
       icon: Twitter,
-      href: 'https://twitter.com/symbaiex',
+      href: 'https://x.com/NeonNexusAgent',
       label: 'Twitter',
       className: 'hover:text-cyan-400'
     },
-    {
-      icon: MessageCircle,
-      href: 'https://t.me/SYMBaiEX',
-      label: 'Telegram',
-      className: 'hover:text-cyan-400'
-    },
+    // {
+    //   icon: MessageCircle,
+    //   href: 'https://t.me/SYMBaiEX',
+    //   label: 'Telegram',
+    //   className: 'hover:text-cyan-400'
+    // },
     {
       icon: Github,
-      href: 'https://github.com/SYMBaiEX/SYMBaiEX',
+      href: 'https://github.com/klingon-droid/NNAgent',
       label: 'GitHub',
       className: 'hover:text-cyan-400'
     }
