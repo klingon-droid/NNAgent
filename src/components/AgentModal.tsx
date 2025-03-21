@@ -208,7 +208,7 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
                 </div>
                 
                 <div className="flex flex-col xs:flex-row items-start xs:items-center gap-2 mt-3">
-                  <a
+                  {/* <a
                     href={character.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -217,7 +217,7 @@ export const AgentModal: React.FC<AgentModalProps> = ({ character, onClose }) =>
                   >
                     <ExternalLink className="w-4 h-4 lg:w-5 lg:h-5" />
                     View Profile
-                  </a>
+                  </a> */}
 
                   <button
                     onClick={() => copyToClipboard(getChatCommand())}
