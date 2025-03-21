@@ -68,7 +68,7 @@ export const apiCommands: Command[] = [
             `REST API: ${ADDRESSES.API.BASE_URL}`,
             `WebSocket: ${ADDRESSES.API.WEBSOCKET}`,
             '',
-            'Documentation: https://github.com/SYMBaiEX/SYMBaiEX'
+            'Documentation: https://docs.neonnexusagent.xyz'
           ];
         }
 

@@ -120,7 +120,7 @@ export const systemCommands: Command[] = [
     description: 'Open documentation',
     category: 'system',
     action: () => {
-      window.open('https://docs.symbaiex.com', '_blank');
+      window.open('https://docs.neonnexusagent.xyz', '_blank');
       return ['Opening documentation...'];
     }
   }
