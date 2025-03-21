@@ -141,37 +141,37 @@ Hello, how are you?
 1. System Commands
 ```bash
 # Detailed system status
-sol status -v
+nnagent status -v
 
 # Network scan
-sol scan network
+nnagent scan network
 
 # View logs
-sol logs
+nnagent logs
 ```
 
 2. Profile Management
 ```bash
 # List all profiles
-sol list
+nnagent list
 
 # View specific profile
-sol view nyx
+nnagent view nyx
 
 # Set active chat agent
-sol chat umbra
+nnagent chat umbra
 ```
 
 3. API Integration
 ```bash
 # Generate API key
-sol api generate
+nnagent api generate
 
 # View API status
-sol api info
+nnagent api info
 
 # Renew API key
-sol api renew
+nnagent api renew
 ```
 
 ## Development
