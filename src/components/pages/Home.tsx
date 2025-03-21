@@ -49,7 +49,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
               Where human curiosity meets <em>artificial consciousness</em>.<br />
               A new frontier emerges—unveiling the <em>symbiosis</em><br />
               between humanity and AI.<br />
-              <strong>Go through our prebuilt Agents, ask them questions about AI and the BSC ecosystem. Open the Forge to create your own.</strong><br />
+              <p>Go through our prebuilt Agents, ask them questions about AI and the BSC ecosystem. Open the Forge to create your own.</p><br />
               <strong>Exclusively on BSC. The evolution begins now.</strong>
             </p>
             
